@@ -3,7 +3,10 @@
 /// <summary>
 /// This implementation is NOT thread safe.
 /// </summary>
-public class SingletonService
+/// <remarks>
+/// The class is marked sealed to prevent derivation.
+/// </remarks>
+public sealed class SingletonService
 {
     private static SingletonService? _instance;
 
@@ -18,5 +21,10 @@ public class SingletonService
 
             return _instance;
         }
+    }
+    
+    // The constructor is private to prevent instantiation.
+    private SingletonService()
+    {
     }
 }
