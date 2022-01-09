@@ -23,18 +23,19 @@ namespace Singleton.RealWorld.Tests
         public void Instance_ParallelInvoke_ServiceIsThreadSafe()
         {
             // Arrange
-            int firstCounter = 0;
-            int secondCounter = 0;
+            SingletonService? firstService = null;
+            SingletonService? secondService = null;
 
             // Act
             Parallel.Invoke(
-                () => firstCounter = SingletonService.Instance.Counter,
-                () => secondCounter = SingletonService.Instance.Counter
+                () => firstService = SingletonService.Instance,
+                () => secondService = SingletonService.Instance
                 );
 
             // Assert
-            Assert.AreEqual(1, firstCounter);
-            Assert.AreEqual(1, secondCounter);
+            Assert.AreSame(firstService, secondService);
+            Assert.AreEqual(1, firstService?.Counter);
+            Assert.AreEqual(1, secondService?.Counter);
         }
     }
 }
