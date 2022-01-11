@@ -3,26 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Singleton.Conceptual", "Creational\Singleton\Singleton.Conceptual\Singleton.Conceptual.csproj", "{1FAC2121-01BB-403C-BD53-FA2330EF5E42}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Creational", "Creational", "{D88EF761-2868-4948-9CAD-F3399D80BB0B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Singleton", "Singleton", "{4F105D70-8FBE-4F2E-8D4D-6BB8517A0684}"
-	ProjectSection(SolutionItems) = preProject
-		Creational\Singleton\README.md = Creational\Singleton\README.md
-		Creational\Singleton\Singleton.svg = Creational\Singleton\Singleton.svg
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CCC6A3F4-086F-4D76-9A0A-05F3F96EB75F}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Singleton.Conceptual.Tests", "Creational\Singleton\Singleton.Conceptual.Tests\Singleton.Conceptual.Tests.csproj", "{2673DBFF-3E41-44FC-BF1E-AF170DC65142}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatternsInCSharp", "DesignPatternsInCSharp\DesignPatternsInCSharp.csproj", "{0E7826A9-F4E7-4A66-B4A7-A2687780E824}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singleton.RealWorld", "Creational\Singleton\Singleton.RealWorld\Singleton.RealWorld.csproj", "{D775B5E8-036D-4550-A478-A6CDBBB88FBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatternsInCSharp.Tests", "DesignPatternsInCSharp.Tests\DesignPatternsInCSharp.Tests.csproj", "{CF2A1292-690D-4224-B283-F74DB9701C0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singleton.RealWorld.Tests", "Creational\Singleton\Singleton.RealWorld.Tests\Singleton.RealWorld.Tests.csproj", "{1E1C767C-E35C-48DE-B06B-4CE475938003}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatternsInCSharp.Benchmarks", "DesignPatternsInCSharp.Benchmarks\DesignPatternsInCSharp.Benchmarks.csproj", "{2E6520F2-3697-4343-BCE9-E13A436655EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,32 +20,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1FAC2121-01BB-403C-BD53-FA2330EF5E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1FAC2121-01BB-403C-BD53-FA2330EF5E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1FAC2121-01BB-403C-BD53-FA2330EF5E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1FAC2121-01BB-403C-BD53-FA2330EF5E42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2673DBFF-3E41-44FC-BF1E-AF170DC65142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2673DBFF-3E41-44FC-BF1E-AF170DC65142}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2673DBFF-3E41-44FC-BF1E-AF170DC65142}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2673DBFF-3E41-44FC-BF1E-AF170DC65142}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D775B5E8-036D-4550-A478-A6CDBBB88FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D775B5E8-036D-4550-A478-A6CDBBB88FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D775B5E8-036D-4550-A478-A6CDBBB88FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D775B5E8-036D-4550-A478-A6CDBBB88FBE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E1C767C-E35C-48DE-B06B-4CE475938003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E1C767C-E35C-48DE-B06B-4CE475938003}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E1C767C-E35C-48DE-B06B-4CE475938003}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E1C767C-E35C-48DE-B06B-4CE475938003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E7826A9-F4E7-4A66-B4A7-A2687780E824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7826A9-F4E7-4A66-B4A7-A2687780E824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E7826A9-F4E7-4A66-B4A7-A2687780E824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E7826A9-F4E7-4A66-B4A7-A2687780E824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2A1292-690D-4224-B283-F74DB9701C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2A1292-690D-4224-B283-F74DB9701C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2A1292-690D-4224-B283-F74DB9701C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2A1292-690D-4224-B283-F74DB9701C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E6520F2-3697-4343-BCE9-E13A436655EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6520F2-3697-4343-BCE9-E13A436655EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E6520F2-3697-4343-BCE9-E13A436655EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E6520F2-3697-4343-BCE9-E13A436655EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{1FAC2121-01BB-403C-BD53-FA2330EF5E42} = {4F105D70-8FBE-4F2E-8D4D-6BB8517A0684}
-		{4F105D70-8FBE-4F2E-8D4D-6BB8517A0684} = {D88EF761-2868-4948-9CAD-F3399D80BB0B}
-		{2673DBFF-3E41-44FC-BF1E-AF170DC65142} = {4F105D70-8FBE-4F2E-8D4D-6BB8517A0684}
-		{D775B5E8-036D-4550-A478-A6CDBBB88FBE} = {4F105D70-8FBE-4F2E-8D4D-6BB8517A0684}
-		{1E1C767C-E35C-48DE-B06B-4CE475938003} = {4F105D70-8FBE-4F2E-8D4D-6BB8517A0684}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {00468D98-F460-4E59-B753-BC761C12577E}
