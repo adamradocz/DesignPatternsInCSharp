@@ -44,4 +44,18 @@ public class ContextTests
         // Assert
         Assert.AreEqual(nameof(ConcreteStateA), context.State.GetType().Name);
     }
+
+    [TestMethod]
+    public void Request_ConcrateStateAPassedAndRequestCalledTwice_TransitionToStateC()
+    {
+        // Arrange
+        var context = new Context(new ConcreteStateA());
+
+        // Act
+        context.Request();
+        context.Request();
+
+        // Assert
+        Assert.AreEqual(nameof(ConcreteStateC), context.State.GetType().Name);
+    }
 }
