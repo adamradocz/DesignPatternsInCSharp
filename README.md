@@ -19,7 +19,7 @@ Creational patterns are ones that create objects, rather than having to instanti
 - Builder constructs complex objects by separating construction and representation.
 - Factory method creates objects without specifying the exact class to create.
 - Prototype creates objects by cloning an existing object.
-- [Singleton](Creational/Singleton) restricts object creation for a class to only one instance.
+- [Singleton](DesignPatternsInCSharp/Creational/Singleton) restricts object creation for a class to only one instance.
 
 ### Structural patterns
 
@@ -41,7 +41,7 @@ Most of these design patterns are specifically concerned with communication betw
 - Command creates objects that encapsulate actions and parameters.
 - Interpreter implements a specialized language.
 - Iterator accesses the elements of an object sequentially without exposing its underlying representation.
-- [Mediator](Behavioral/Mediator) allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
+- [Mediator](DesignPatternsInCSharp/Behavioral/Mediator) allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
 - Memento provides the ability to restore an object to its previous state (undo).
 - Observer is a publish/subscribe pattern, which allows a number of observer objects to see an event.
 - State allows an object to alter its behavior when its internal state changes.
