@@ -1,4 +1,4 @@
-﻿namespace DesignPatternsInCSharp.Behavioral.Mediator;
+﻿namespace DesignPatternsInCSharp.Behavioral.Mediator.Conceptual;
 
 public abstract class Mediator
 {

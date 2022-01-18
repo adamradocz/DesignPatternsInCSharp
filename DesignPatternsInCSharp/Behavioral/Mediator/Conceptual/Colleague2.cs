@@ -1,9 +1,9 @@
-﻿namespace DesignPatternsInCSharp.Behavioral.Mediator;
+﻿namespace DesignPatternsInCSharp.Behavioral.Mediator.Conceptual;
 
 public class Colleague2 : Colleague
 {
     public Colleague2(Mediator mediator) : base(mediator)
-    {}
+    { }
 
     public override void HandleNotification(string message)
     {
