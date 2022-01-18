@@ -41,7 +41,7 @@ Most of these design patterns are specifically concerned with communication betw
 - Command creates objects that encapsulate actions and parameters.
 - Interpreter implements a specialized language.
 - Iterator accesses the elements of an object sequentially without exposing its underlying representation.
-- [Mediator](Behavioral/Mediator) Mediator allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
+- [Mediator](Behavioral/Mediator) allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
 - Memento provides the ability to restore an object to its previous state (undo).
 - Observer is a publish/subscribe pattern, which allows a number of observer objects to see an event.
 - State allows an object to alter its behavior when its internal state changes.
