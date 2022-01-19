@@ -6,7 +6,7 @@ Simple explanation: Allows an object to change what it does based on its current
 
 ## Elements of the State Pattern
 
-- Context: Maintains an instance of a concrete state as the current state.
+- Context: Maintains an instance of a concrete state as the current state. This is used by the clients.
 - Abstract State: Defines an interface which encapsulates all state-specific behaviours
 - Concrate State: Implements behaviours specific to a particular state of context. State classes should be responsible for transitioning state.
 
