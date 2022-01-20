@@ -1,4 +1,4 @@
-﻿namespace DesignPatternsInCSharp.Behavioral.State.Conceptual;
+namespace DesignPatternsInCSharp.Behavioral.State.Conceptual;
 
 public class Context
 {
@@ -9,8 +9,5 @@ public class Context
         State = state ?? throw new ArgumentNullException(nameof(state));
     }
 
-    public void Request()
-    {
-        State.Handle(this);
-    }
+    public void Request() => State.Handle(this);
 }
