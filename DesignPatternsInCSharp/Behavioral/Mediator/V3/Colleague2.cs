@@ -1,4 +1,4 @@
-﻿namespace DesignPatternsInCSharp.Behavioral.Mediator;
+﻿namespace DesignPatternsInCSharp.Behavioral.Mediator.V3;
 
 public class Colleague2 : Colleague
 {

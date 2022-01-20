@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace DesignPatternsInCSharp.Behavioral.Mediator.MediatR;
+namespace DesignPatternsInCSharp.Behavioral.Mediator.MediatRNotification;
 
 public class Colleague2 : INotificationHandler<NotificationMessage>
 {
