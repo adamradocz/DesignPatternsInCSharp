@@ -6,11 +6,11 @@ using DesignPatternsInCSharp.Behavioral.Observer.Interfaces;
 namespace DesignPatternsInCSharp.Benchmarks.Behavioral;
 
 [MemoryDiagnoser]
-public class ObserverBenchMarks
+public class ObserverBenchmarks
 {
-    private readonly IOwnObserver _observer1;
+    private readonly ICustomObserver _observer1;
 
-    public ObserverBenchMarks ()
+    public ObserverBenchmarks ()
 	{      
         _observer1 = new ConcreteObserver();
 	}
@@ -32,25 +32,9 @@ public class ObserverBenchMarks
     }
 
     [Benchmark]
-    public void ObservableObjectV3Benchmark()
-    {
-        ObservableObjectV3 observableObjectV3 = new();
-        observableObjectV3.Subscribe(_observer1);
-        observableObjectV3.NotifySubscribers();
-    }
-
-    [Benchmark]
-    public void ObservableObjectV4Benchmark()
-    {
-        ObservableObjectV4 observableObjectV4 = new();
-        observableObjectV4.Subscribe(_observer1);
-        observableObjectV4.NotifySubscribers();
-    }
-
-    [Benchmark]
     public void ObservableObjectV5Benchmark()
     {
-        ObservableObjectV5 observableObjectV5 = new();
+        ObservableObjectV3 observableObjectV5 = new();
         observableObjectV5.Subscribe(_observer1);
         observableObjectV5.NotifySubscribers();
     }
@@ -58,7 +42,7 @@ public class ObserverBenchMarks
     [Benchmark]
     public void ObservableObjectV6Benchmark()
     {
-        ObservableObjectV6 observableObjectV6 = new();
+        ObservableObjectV4 observableObjectV6 = new();
         observableObjectV6.Subscribe(_observer1);
         observableObjectV6.NotifySubscribers();
     }

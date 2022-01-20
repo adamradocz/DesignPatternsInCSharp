@@ -2,7 +2,6 @@ using DesignPatternsInCSharp.Behavioral.Observer;
 using DesignPatternsInCSharp.Behavioral.Observer.Implementations;
 using DesignPatternsInCSharp.Behavioral.Observer.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 
 namespace DesignPatternsInCSharp.Tests.Behavioral.Observer;
 
@@ -14,14 +13,14 @@ public class ObservableObjectV1Tests
     {
         //Arrange
         ObservableObjectV1 observableObjectV1 = new();
-        IOwnObserver observer1 = new ConcreteObserver();
+        ICustomObserver observer1 = new ConcreteObserver();
         Assert.AreEqual(0, observer1.ReceivedUpdates);
 
         //Act
         observableObjectV1.Subscribe(observer1);
         observableObjectV1.NotifySubscribers();
 
-        IOwnObserver observer2 = new ConcreteObserver();
+        ICustomObserver observer2 = new ConcreteObserver();
         Assert.AreEqual(0, observer2.ReceivedUpdates);
         observableObjectV1.Subscribe(observer2);
 
@@ -35,7 +34,7 @@ public class ObservableObjectV1Tests
     {
         //Arrange
         ObservableObjectV1 observableObjectV1 = new();
-        IOwnObserver observer1 = new ConcreteObserver();
+        ICustomObserver observer1 = new ConcreteObserver();
 
         //Act
         observableObjectV1.Subscribe(observer1);

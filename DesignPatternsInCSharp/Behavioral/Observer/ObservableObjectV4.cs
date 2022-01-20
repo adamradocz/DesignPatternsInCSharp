@@ -1,36 +1,15 @@
 using DesignPatternsInCSharp.Behavioral.Observer.Interfaces;
+using System.Reactive.Subjects;
 
 namespace DesignPatternsInCSharp.Behavioral.Observer;
 
-//Using SynchronizedCollection
 public class ObservableObjectV4
 {
-    private readonly SynchronizedCollection<IOwnObserver> _subscribers = new();
+    public Subject<string> Subject { get; } = new Subject<string>();
 
-    public int NumberOfSubscribers => _subscribers.Count;
+    public IObservable<string> Observable => Subject;
 
-    public void Subscribe(IOwnObserver subscriber)
-    {
-        //We want to prevent null instances to be added
-        if (subscriber != null)
-        {
-            _subscribers.Add(subscriber);
-        }
-    }
+    public IDisposable Subscribe(ICustomObserver observer) => Observable.Subscribe(_ => observer.Update());
 
-    public void Unsubscribe(IOwnObserver subscriber)
-    {
-        if (_subscribers.Count > 0)
-        {
-            _subscribers.Remove(subscriber);
-        }
-    }
-
-    public void NotifySubscribers()
-    {
-        foreach (var subscriber in _subscribers)
-        {
-            subscriber.Update();
-        }
-    }
+    public void NotifySubscribers() => Subject.OnNext(string.Empty);
 }

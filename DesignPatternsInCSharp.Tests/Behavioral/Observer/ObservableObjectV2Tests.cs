@@ -13,14 +13,14 @@ public class ObservableObjectV2Tests
     {
         //Arrange
         ObservableObjectV1 observableObjectV2 = new();
-        IOwnObserver observer1 = new ConcreteObserver();
+        ICustomObserver observer1 = new ConcreteObserver();
         Assert.AreEqual(0, observer1.ReceivedUpdates);
 
         //Act
         observableObjectV2.Subscribe(observer1);
         observableObjectV2.NotifySubscribers();
 
-        IOwnObserver observer2 = new ConcreteObserver();
+        ICustomObserver observer2 = new ConcreteObserver();
         Assert.AreEqual(0, observer2.ReceivedUpdates);
         observableObjectV2.Subscribe(observer2);
 
@@ -34,7 +34,7 @@ public class ObservableObjectV2Tests
     {
         //Arrange
         ObservableObjectV2 observableObjectV2 = new();
-        IOwnObserver observer1 = new ConcreteObserver();
+        ICustomObserver observer1 = new ConcreteObserver();
 
         //Act
         observableObjectV2.Subscribe(observer1);

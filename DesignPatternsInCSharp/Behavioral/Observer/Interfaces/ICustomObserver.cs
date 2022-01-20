@@ -1,6 +1,6 @@
 namespace DesignPatternsInCSharp.Behavioral.Observer.Interfaces;
 
-public interface IOwnObserver
+public interface ICustomObserver
 {
     int ReceivedUpdates { get; }
     void Update();

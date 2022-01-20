@@ -12,17 +12,17 @@ public class ObservableObjectV4Tests
     public void Subscribe_ObserverSubscribed_ReceivesUpdate()
     {
         //Arrange
-        ObservableObjectV4 observableObjectV4 = new();
-        IOwnObserver observer1 = new ConcreteObserver();
+        ObservableObjectV4 observableObjectV6 = new();
+        ICustomObserver observer1 = new ConcreteObserver();
         Assert.AreEqual(0, observer1.ReceivedUpdates);
 
         //Act
-        observableObjectV4.Subscribe(observer1);
-        observableObjectV4.NotifySubscribers();
+        using var disposable = observableObjectV6.Subscribe(observer1);
+        observableObjectV6.NotifySubscribers();
 
-        IOwnObserver observer2 = new ConcreteObserver();
+        ICustomObserver observer2 = new ConcreteObserver();
         Assert.AreEqual(0, observer2.ReceivedUpdates);
-        observableObjectV4.Subscribe(observer2);
+        using var disposable2 = observableObjectV6.Subscribe(observer2);
 
         //Assert
         Assert.AreEqual(1, observer1.ReceivedUpdates);
@@ -33,15 +33,15 @@ public class ObservableObjectV4Tests
     public void Subscribe_SameObserverSubscribesMultipleTimes_ObserverReceivesMultipleTimes()
     {
         //Arrange
-        ObservableObjectV4 observableObjectV4 = new();
-        IOwnObserver observer1 = new ConcreteObserver();
+        ObservableObjectV4 observableObjectV6 = new();
+        ICustomObserver observer1 = new ConcreteObserver();
 
         //Act
-        observableObjectV4.Subscribe(observer1);
-        observableObjectV4.Subscribe(observer1);
+        using var disposable = observableObjectV6.Subscribe(observer1);
+        _ = observableObjectV6.Subscribe(observer1);
 
         //Assert
-        observableObjectV4.NotifySubscribers();
+        observableObjectV6.NotifySubscribers();
         Assert.AreEqual(2, observer1.ReceivedUpdates);
     }
 }

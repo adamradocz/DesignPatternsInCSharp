@@ -2,18 +2,10 @@ using DesignPatternsInCSharp.Behavioral.Observer.Interfaces;
 
 namespace DesignPatternsInCSharp.Behavioral.Observer.Implementations;
 
-public class ConcreteObserver : IOwnObserver
+public class ConcreteObserver : ICustomObserver
 {
-    private int _receivedUpdates = 0;
-    public int ReceivedUpdates
-    {
-        get => _receivedUpdates;
-    }
+    public int ReceivedUpdates { get; private set; } = 0;
 
-    //Every concrete class has to implement the ISubscriber interface
-    public void Update()
-    {
-        //Do some stuff here
-        _receivedUpdates++;
-    }
+    // Do some stuff here
+    public void Update() => ReceivedUpdates++;
 }

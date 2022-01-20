@@ -2,42 +2,41 @@ using DesignPatternsInCSharp.Behavioral.Observer.Interfaces;
 
 namespace DesignPatternsInCSharp.Behavioral.Observer;
 
-//Straightforward, unoptimized implementation
+// Thread safe
 public class ObservableObjectV2
 {
-    private readonly List<IOwnObserver> _subscribers = new();
-    private readonly object _observerLock = new object();
+    private readonly List<ICustomObserver> _subscribers = new();
+    private readonly object _lock = new();
 
+    /// <summary>
+    /// Only for testing purposes
+    /// </summary>
     public int NumberOfSubscribers => _subscribers.Count;
 
-    public void Subscribe(IOwnObserver subscriber)
+    public void Subscribe(ICustomObserver subscriber)
     {
-        //We want to prevent null instances to be added
-        lock (_observerLock)
+        lock (_lock)
         {
-            if (subscriber != null)
-            {
-                _subscribers.Add(subscriber);
-            }
+            _subscribers.Add(subscriber);
         }
     }
 
-    public void Unsubscribe(IOwnObserver subscriber)
+    public bool Unsubscribe(ICustomObserver subscriber)
     {
-        lock (_observerLock)
+        lock (_lock)
         {
-            if (_subscribers.Count > 0)
-            {
-                _subscribers.Remove(subscriber);
-            }
+            return _subscribers.Remove(subscriber);
         }
     }
 
     public void NotifySubscribers()
     {
-        foreach (var subscriber in _subscribers)
+        lock (_lock)
         {
-            subscriber.Update();
+            foreach (var subscriber in _subscribers)
+            {
+                subscriber.Update();
+            }
         }
     }
 }
