@@ -18,7 +18,7 @@ public class ObservableObjectV1Tests
 
         //Act
         observableObjectV1.Subscribe(observer1);
-        observableObjectV1.NotifySubscribers();
+        observableObjectV1.NotifyObservers();
 
         ICustomObserver observer2 = new ConcreteObserver();
         Assert.AreEqual(0, observer2.ReceivedUpdates);
@@ -42,7 +42,7 @@ public class ObservableObjectV1Tests
         Assert.AreNotEqual(1, observableObjectV1.NumberOfSubscribers);
 
         //Assert
-        observableObjectV1.NotifySubscribers();
+        observableObjectV1.NotifyObservers();
         Assert.AreEqual(2, observer1.ReceivedUpdates);
     }
 }
