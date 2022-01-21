@@ -63,6 +63,21 @@ public class AccountTests
     }
 
     [TestMethod]
+    public void PayInterest_AccountInGoldState_InterestPayed()
+    {
+        // Arrange
+        var account = new Account();
+        account.Deposit(100000);
+
+        // Act
+        account.PayInterest();
+
+        // Assert
+        Assert.AreEqual(110000, account.Balance);
+        Assert.AreEqual(nameof(GoldAccountState), account.State.GetType().Name);
+    }
+
+    [TestMethod]
     public void Withdraw_WithdrawMoreThanAvailableBalance_BalanceStaysTheSame()
     {
         // Arrange

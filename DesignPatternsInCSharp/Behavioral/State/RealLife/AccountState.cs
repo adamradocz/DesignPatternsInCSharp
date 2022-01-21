@@ -3,10 +3,11 @@ namespace DesignPatternsInCSharp.Behavioral.State.RealLife;
 // The Abstract State.
 public abstract class AccountState
 {
+    internal const decimal BronzUpperLimit = 1000;
+    internal const decimal SilverUpperLimit = 10000;
+
     internal Account _account;
     public decimal Interest { get; internal set; }
-    public decimal LowerLimit { get; internal set; }
-    public decimal UpperLimit { get; internal set; }
 
     public AccountState(Account account)
     {
