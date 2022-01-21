@@ -4,22 +4,22 @@ namespace DesignPatternsInCSharp.Behavioral.Observer;
 
 public class ObservableObjectV1
 {
-    private readonly List<ICustomObserver> _subscribers = new();
+    private readonly List<ICustomObserver> _observers = new();
 
     /// <summary>
     /// Only for testing purposes
     /// </summary>
-    public int NumberOfSubscribers => _subscribers.Count;
+    public int NumberOfSubscribers => _observers.Count;
 
-    public void Subscribe(ICustomObserver subscriber) => _subscribers.Add(subscriber);
+    public void Subscribe(ICustomObserver observer) => _observers.Add(observer);
 
-    public bool Unsubscribe(ICustomObserver subscriber) => _subscribers.Remove(subscriber);
+    public bool Unsubscribe(ICustomObserver observer) => _observers.Remove(observer);
 
-    public void NotifySubscribers()
+    public void NotifyObservers()
     {
-        foreach (var subscriber in _subscribers)
+        foreach (var observer in _observers)
         {
-            subscriber.Update();
+            observer.Update();
         }
     }
 }

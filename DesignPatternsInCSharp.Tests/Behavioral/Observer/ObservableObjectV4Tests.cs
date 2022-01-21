@@ -18,7 +18,7 @@ public class ObservableObjectV4Tests
 
         //Act
         using var disposable = observableObjectV6.Subscribe(observer1);
-        observableObjectV6.NotifySubscribers();
+        observableObjectV6.NotifyObservers();
 
         ICustomObserver observer2 = new ConcreteObserver();
         Assert.AreEqual(0, observer2.ReceivedUpdates);
@@ -41,7 +41,7 @@ public class ObservableObjectV4Tests
         _ = observableObjectV6.Subscribe(observer1);
 
         //Assert
-        observableObjectV6.NotifySubscribers();
+        observableObjectV6.NotifyObservers();
         Assert.AreEqual(2, observer1.ReceivedUpdates);
     }
 }
