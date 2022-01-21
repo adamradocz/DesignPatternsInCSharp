@@ -2,7 +2,6 @@ using DesignPatternsInCSharp.Behavioral.Observer.Interfaces;
 
 namespace DesignPatternsInCSharp.Behavioral.Observer;
 
-// Thread safe
 public class ObservableObjectV2
 {
     private delegate void EventHandler();
