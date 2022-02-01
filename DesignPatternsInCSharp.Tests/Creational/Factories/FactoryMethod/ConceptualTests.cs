@@ -1,7 +1,7 @@
-using DesignPatternsInCSharp.Creational.Factory.FactoryMethod.Conceptual;
+using DesignPatternsInCSharp.Creational.Factories.FactoryMethod.Conceptual;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DesignPatternsInCSharp.Tests.Creational.Factory.FactoryMethod;
+namespace DesignPatternsInCSharp.Tests.Creational.Factories.FactoryMethod;
 
 [TestClass]
 public class ConceptualTests

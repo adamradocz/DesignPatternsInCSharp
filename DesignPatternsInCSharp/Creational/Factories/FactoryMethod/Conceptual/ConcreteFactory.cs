@@ -1,4 +1,4 @@
-namespace DesignPatternsInCSharp.Creational.Factory.FactoryMethod.Conceptual;
+namespace DesignPatternsInCSharp.Creational.Factories.FactoryMethod.Conceptual;
 
 public class ConcreteFactory : FactoryBase
 {
