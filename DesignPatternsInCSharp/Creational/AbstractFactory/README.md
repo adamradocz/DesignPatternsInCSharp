@@ -14,4 +14,6 @@ In other words: A super factory that creates other factories, Factory of Factori
 - Client: uses interfaces declared by AbstractFactory and AbstractProduct classes
 
 ## Sources
-- https://www.dofactory.com/net/abstract-factory-design-pattern
+- [Dofactory - C# Abstract Factory](https://www.dofactory.com/net/abstract-factory-design-pattern)
+- [Refactoring.guru - Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory)
+- [Pluralsight - C# Design Patterns: Factory and Abstract Factory](https://app.pluralsight.com/library/courses/c-sharp-design-patterns-factory-abstract/table-of-contents)
