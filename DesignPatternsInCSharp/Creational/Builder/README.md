@@ -1,4 +1,4 @@
-jj# Builder Pattern
+# Builder Pattern
 
 ![Builder UML Diagram](Builder.svg)
 
