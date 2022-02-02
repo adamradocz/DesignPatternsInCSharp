@@ -17,7 +17,7 @@ Creational patterns are ones that create objects, rather than having to instanti
 
 - Abstract factory groups object factories that have a common theme.
 - Builder constructs complex objects by separating construction and representation.
-- Factory method creates objects without specifying the exact class to create.
+- [Factory method](DesignPatternsInCSharp/Creational/Factories/FactoryMethod/README.md) creates objects without specifying the exact class to create.
 - Prototype creates objects by cloning an existing object.
 - [Singleton](Creational/Singleton) restricts object creation for a class to only one instance.
 
@@ -51,6 +51,7 @@ Most of these design patterns are specifically concerned with communication betw
 
 ## Other frequently used patterns
 
+- [Factory](DesignPatternsInCSharp/Creational/Factories/Factory/README.md)
 - Repository.
 - Unit of work is an object-relational behavioral pattern.
 
