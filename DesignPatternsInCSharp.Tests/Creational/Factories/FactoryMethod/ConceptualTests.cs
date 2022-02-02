@@ -7,7 +7,7 @@ namespace DesignPatternsInCSharp.Tests.Creational.Factories.FactoryMethod;
 public class ConceptualTests
 {
     [TestMethod]
-    public void Factory_CreateX_GetX()
+    public void Factory_CreateProductX_GetProductX()
     {
         // Arrange
         var factroy = new ConcreteFactory();

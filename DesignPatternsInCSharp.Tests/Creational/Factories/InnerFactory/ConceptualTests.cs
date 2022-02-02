@@ -7,7 +7,7 @@ namespace DesignPatternsInCSharp.Tests.Creational.Factories.InnerFactory;
 public class ConceptualTests
 {
     [TestMethod]
-    public void Factory_CreateX_GetX()
+    public void Factory_CreateProduct_GetProduct()
     {
         // Arrange
         var product = Product.Factory.Create();
