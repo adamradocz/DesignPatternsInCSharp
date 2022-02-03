@@ -11,4 +11,11 @@ public class ConcreteDirector
         builder.SetName();
         builder.SetValue();
     }
+
+    public void MakeImmutableObject(IBuilder<ImmutableTestObject> builder)
+    {
+        builder.Reset();
+        builder.SetName();
+        builder.SetValue();
+    }
 }

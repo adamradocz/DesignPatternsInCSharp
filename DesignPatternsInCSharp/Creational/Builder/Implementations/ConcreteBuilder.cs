@@ -12,7 +12,7 @@ public class ConcreteBuilder : IBuilder<TestObject>
         _objectToBuild = new TestObject();
     }
 
-    public void SetName(string name)
+    public void SetName(in string name)
     {
         _objectToBuild.ObjectName = name;
     }
