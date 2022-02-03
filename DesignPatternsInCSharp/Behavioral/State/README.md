@@ -10,7 +10,7 @@ Simple explanation: Allows an object to change what it does based on its current
 - Abstract State: Defines an interface which encapsulates all state-specific behaviours
 - Concrate State: Implements behaviours specific to a particular state of context. State classes should be responsible for transitioning state.
 
-## Approch
+## Approach
 
 - List of possible states.
 - The conditions for transitioning between those states.
