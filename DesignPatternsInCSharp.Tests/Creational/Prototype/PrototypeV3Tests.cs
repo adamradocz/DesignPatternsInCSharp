@@ -26,8 +26,10 @@ internal class PrototypeV3Tests
         Sandwich sandwich1 = sandwichMenu["BLT"].Clone() as Sandwich;
         Sandwich sandwich2 = sandwichMenu["ThreeMeatCombo"].Clone() as Sandwich;
         Sandwich sandwich3 = sandwichMenu["Vegetarian"].Clone() as Sandwich;
+        sandwich1.Cheese = "Chedar";
 
         // Assert
+        Assert.AreNotEqual(sandwich1.Cheese, (sandwichMenu["BLT"] as Sandwich).Cheese);
 
     }
 

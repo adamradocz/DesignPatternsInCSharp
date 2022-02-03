@@ -16,10 +16,10 @@ namespace DesignPatternsInCSharp.Creational.Prototype
 
     public class Sandwich : SandwichPrototype
     {
-        private string Bread;
-        private string Meat;
-        private string Cheese;
-        private string Veggies;
+        public string Bread { get; set; }
+        public string Meat { get; set; }
+        public string Cheese { get; set; } 
+        public string Veggies { get; set; }
 
         public Sandwich(string bread, string meat, string cheese, string veggies)
         {

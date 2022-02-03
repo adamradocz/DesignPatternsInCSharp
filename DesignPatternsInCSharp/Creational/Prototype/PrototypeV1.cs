@@ -1,38 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DesignPatternsInCSharp.Creational.Prototype
 {
     public class Person
     {
-        public int Age;
-        public string Name;
-        public IdInfo IdInfo;
+        public int Age { get; set; }
+        public string Name { get; set; }
+        public IdInfo IdInfo { get; set; }
 
         public Person ShallowCopy()
         {
-            return (Person)this.MemberwiseClone();
+            return (Person)MemberwiseClone();
         }
 
         public Person DeepCopy()
         {
-            Person clone = (Person)this.MemberwiseClone();
+            Person clone = (Person)MemberwiseClone();
             clone.IdInfo = new IdInfo(IdInfo.IdNumber);
-            clone.Name = String.Copy(Name);
+            clone.Name = string.Copy(Name);
             return clone;
-        }
-    }
-
-    public class IdInfo
-    {
-        public int IdNumber;
-
-        public IdInfo(int idNumber)
-        {
-            this.IdNumber = idNumber;
         }
     }
 }

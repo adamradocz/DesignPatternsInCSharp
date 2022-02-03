@@ -1,8 +1,8 @@
-using DesignPatternsInCSharp.Creational.Prototype;
+using DesignPatternsInCSharp.Creational.PrototypeV1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace DesignPatternsInCSharp.Tests.Creational.Prototype;
+namespace DesignPatternsInCSharp.Tests.Creational.PrototypeV1;
 
 [TestClass]
 public class PrototypeV1Tests
@@ -11,6 +11,7 @@ public class PrototypeV1Tests
     [TestMethod]
     public void PrototypeV1TestsTestMethod()
     {
+        //SallowCopy_Copyed_ObjectsAreTheSame
        
         // Arrange
         Person p1 = new Person();

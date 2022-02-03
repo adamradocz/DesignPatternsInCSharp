@@ -10,7 +10,8 @@ internal static class Program
         BenchmarkSwitcher benchmarkSwitcher = new(
             new[]
             {
-                typeof(SingletonBenchmarks)
+                typeof(SingletonBenchmarks),
+                typeof(PrototypeBenchmark)
             });
 
         benchmarkSwitcher.Run(args);
