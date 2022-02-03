@@ -17,12 +17,12 @@ public class ObservableObjectV3Tests
         Assert.AreEqual(0, observer1.ReceivedUpdates);
 
         //Act
-        observableObjectV5.Subscribe(observer1);
-        observableObjectV5.NotifySubscribers();
+        observableObjectV5.Subscribe(observer1.Update);
+        observableObjectV5.NotifyObservers();
 
         ICustomObserver observer2 = new ConcreteObserver();
         Assert.AreEqual(0, observer2.ReceivedUpdates);
-        observableObjectV5.Subscribe(observer2);
+        observableObjectV5.Subscribe(observer2.Update);
 
         //Assert
         Assert.AreEqual(1, observer1.ReceivedUpdates);
@@ -37,11 +37,11 @@ public class ObservableObjectV3Tests
         ICustomObserver observer1 = new ConcreteObserver();
 
         //Act
-        observableObjectV5.Subscribe(observer1);
-        observableObjectV5.Subscribe(observer1);
+        observableObjectV5.Subscribe(observer1.Update);
+        observableObjectV5.Subscribe(observer1.Update);
 
         //Assert
-        observableObjectV5.NotifySubscribers();
+        observableObjectV5.NotifyObservers();
         Assert.AreEqual(2, observer1.ReceivedUpdates);
     }
 }

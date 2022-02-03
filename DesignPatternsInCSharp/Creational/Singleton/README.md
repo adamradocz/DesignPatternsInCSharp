@@ -1,6 +1,6 @@
 # Singleton Pattern
 
-![Singleton UML Diagram](Singleton.svg)
+![Singleton UML Diagram](singleton.svg)
 
 GoF Definition: Ensures a class has only one instance, and provides a global point of access to it.
 
