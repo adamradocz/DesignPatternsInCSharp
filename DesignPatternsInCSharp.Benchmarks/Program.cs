@@ -1,7 +1,8 @@
 using BenchmarkDotNet.Running;
 using DesignPatternsInCSharp.Benchmarks.Creational;
+using DesignPatternsInCSharp.Benchmarks.Creational.Factories;
 
-namespace DesignPatternsInCSharp.Tests;
+namespace DesignPatternsInCSharp.Benchmarks;
 
 internal static class Program
 {
@@ -10,7 +11,9 @@ internal static class Program
         BenchmarkSwitcher benchmarkSwitcher = new(
             new[]
             {
-                typeof(SingletonBenchmarks)
+                typeof(SingletonBenchmarks),
+                typeof(FactoryBenchmarks),
+                typeof(ObserverBenchmarks)
             });
 
         benchmarkSwitcher.Run(args);

@@ -11,5 +11,5 @@ public class ObservableObjectV4
 
     public IDisposable Subscribe(ICustomObserver observer) => Observable.Subscribe(_ => observer.Update());
 
-    public void NotifySubscribers() => Subject.OnNext(string.Empty);
+    public void NotifyObservers() => Subject.OnNext(string.Empty);
 }
