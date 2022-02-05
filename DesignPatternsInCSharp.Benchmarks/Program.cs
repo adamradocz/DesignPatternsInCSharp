@@ -12,8 +12,7 @@ internal static class Program
             new[]
             {
                 typeof(SingletonBenchmarks),
-                typeof(FactoryBenchmarks),
-                typeof(ObserverBenchmarks)
+                typeof(FactoryBenchmarks)
             });
 
         benchmarkSwitcher.Run(args);

@@ -20,21 +20,31 @@ public class Account
 
         _stateMachine.Configure(AccountState.Bronz)
             .OnEntry(() => _interest = 0)
-            .PermitReentry(AccountAction.Deposit)
-            .PermitIf(AccountAction.Deposit, AccountState.Silver, () => (Balance > BronzUpperLimit && Balance <= SilverUpperLimit))
-            .PermitIf(AccountAction.Deposit, AccountState.Gold, () => Balance > SilverUpperLimit);
-            
+            .PermitIf(AccountAction.Deposit, AccountState.Silver, () => IsInSilverState())
+            .PermitIf(AccountAction.Deposit, AccountState.Gold, () => IsInGoldState())
+            .PermitReentryIf(AccountAction.Deposit, () => IsInBronzState())
+            .Ignore(AccountAction.Withdraw);
 
         _stateMachine.Configure(AccountState.Silver)
-            .PermitIf(AccountAction.Deposit, AccountState.Gold, () => Balance > SilverUpperLimit)
-            .PermitIf(AccountAction.Withdraw, AccountState.Bronz, () => Balance <= BronzUpperLimit)
-            .OnEntry(() => _interest = 0.01M);
+            .OnEntry(() => _interest = 0.01M)
+            .PermitIf(AccountAction.Deposit, AccountState.Gold, () => IsInGoldState())
+            .PermitIf(AccountAction.Withdraw, AccountState.Bronz, () => IsInBronzState())
+            .PermitReentryIf(AccountAction.Deposit, () => IsInSilverState())
+            .PermitReentryIf(AccountAction.Withdraw, () => IsInSilverState());
 
         _stateMachine.Configure(AccountState.Gold)
-            .PermitIf(AccountAction.Withdraw, AccountState.Bronz, () => Balance <= BronzUpperLimit)
-            .PermitIf(AccountAction.Withdraw, AccountState.Silver, () => Balance <= SilverUpperLimit && Balance > BronzUpperLimit)
-            .OnEntry(() => _interest = 0.1M);
+            .OnEntry(() => _interest = 0.1M)
+            .PermitIf(AccountAction.Withdraw, AccountState.Bronz, () => IsInBronzState())
+            .PermitIf(AccountAction.Withdraw, AccountState.Silver, () => IsInSilverState())
+            .PermitReentryIf(AccountAction.Withdraw, () => IsInGoldState())
+            .Ignore(AccountAction.Deposit);
     }
+
+    private bool IsInBronzState() => Balance <= BronzUpperLimit;
+
+    private bool IsInSilverState() => Balance > BronzUpperLimit && Balance <= SilverUpperLimit;
+
+    private bool IsInGoldState() => Balance > SilverUpperLimit;
 
     public void Deposit(decimal amount)
     {
