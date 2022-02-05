@@ -51,7 +51,7 @@ Most of these design patterns are specifically concerned with communication betw
 
 ## Other frequently used patterns
 
-- [Factory](DesignPatternsInCSharp/Creational/Factories/Factory/README.md)
+- [Factory](DesignPatternsInCSharp/Creational/Factories/Factory/README.md).
 - Repository.
 - Unit of work is an object-relational behavioral pattern.
 
