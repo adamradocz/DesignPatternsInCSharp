@@ -1,11 +1,11 @@
-﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Attributes;
 using DesignPatternsInCSharp.Creational.Singleton;
 using System.Collections.Concurrent;
 
 namespace DesignPatternsInCSharp.Benchmarks.Creational;
 
 // Source: https://github.com/ardalis/DesignPatternsInCSharp
-[MemoryDiagnoser]
+[MemoryDiagnoser, DisassemblyDiagnoser(printInstructionAddresses: true, printSource: true, exportDiff: true)]
 public class SingletonBenchmarks
 {
     private readonly ParallelOptions _parallelOptions;

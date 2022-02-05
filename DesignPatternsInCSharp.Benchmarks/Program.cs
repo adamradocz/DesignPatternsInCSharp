@@ -11,8 +11,12 @@ internal static class Program
         BenchmarkSwitcher benchmarkSwitcher = new(
             new[]
             {
+                // Creational patterns
                 typeof(SingletonBenchmarks),
-                typeof(FactoryBenchmarks)
+                typeof(FactoryBenchmarks),
+
+                // Behavioral patterns
+                typeof(StateBenchmarks)
             });
 
         benchmarkSwitcher.Run(args);
