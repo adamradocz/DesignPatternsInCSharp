@@ -22,21 +22,21 @@ public class Account
             .OnEntry(() => _interest = 0)
             .PermitIf(AccountAction.Deposit, AccountState.Silver, () => IsInSilverState())
             .PermitIf(AccountAction.Deposit, AccountState.Gold, () => IsInGoldState())
-            .PermitReentryIf(AccountAction.Deposit, () => IsInBronzState())
+            .IgnoreIf(AccountAction.Deposit, () => IsInBronzState())
             .Ignore(AccountAction.Withdraw);
 
         _stateMachine.Configure(AccountState.Silver)
             .OnEntry(() => _interest = 0.01M)
             .PermitIf(AccountAction.Deposit, AccountState.Gold, () => IsInGoldState())
             .PermitIf(AccountAction.Withdraw, AccountState.Bronz, () => IsInBronzState())
-            .PermitReentryIf(AccountAction.Deposit, () => IsInSilverState())
-            .PermitReentryIf(AccountAction.Withdraw, () => IsInSilverState());
+            .IgnoreIf(AccountAction.Deposit, () => IsInSilverState())
+            .IgnoreIf(AccountAction.Withdraw, () => IsInSilverState());
 
         _stateMachine.Configure(AccountState.Gold)
             .OnEntry(() => _interest = 0.1M)
             .PermitIf(AccountAction.Withdraw, AccountState.Bronz, () => IsInBronzState())
             .PermitIf(AccountAction.Withdraw, AccountState.Silver, () => IsInSilverState())
-            .PermitReentryIf(AccountAction.Withdraw, () => IsInGoldState())
+            .IgnoreIf(AccountAction.Withdraw, () => IsInGoldState())
             .Ignore(AccountAction.Deposit);
     }
 
