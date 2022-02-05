@@ -6,13 +6,13 @@ namespace DesignPatternsInCSharp.Benchmarks.Creational;
 
 [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
 [MemoryDiagnoser, DisassemblyDiagnoser(printInstructionAddresses: true, printSource: true, exportDiff: true)]
-public class PrototypeBenchmark
+public class PrototypeBenchmarks
 {
     private readonly Person _person;
     private readonly PersonShallowCopy _personShallowCopy;
     private readonly PersonDeepCopy _personDeepCopy;
 
-    public PrototypeBenchmark()
+    public PrototypeBenchmarks()
     {
         _person = new Person() { Age = 42, Name = "Jack Daniels", IdInfo = new IdInfo(666) };
         _personShallowCopy = new PersonShallowCopy() { Age = 42, Name = "Jack Daniels", IdInfo = new IdInfo(666) };

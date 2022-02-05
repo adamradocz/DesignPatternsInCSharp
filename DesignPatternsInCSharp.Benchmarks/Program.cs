@@ -14,7 +14,7 @@ internal static class Program
                 // Creational patterns
                 typeof(SingletonBenchmarks),
                 typeof(FactoryBenchmarks),
-                typeof(PrototypeBenchmark),
+                typeof(PrototypeBenchmarks),
 
                 // Behavioral patterns
                 typeof(StateBenchmarks)
