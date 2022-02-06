@@ -18,8 +18,8 @@ Creational patterns are ones that create objects, rather than having to instanti
 - [Abstract Factory](DesignPatternsInCSharp/Creational/AbstractFactory/README.md) groups object factories that have a common theme.
 - [Builder](DesignPatternsInCSharp/Creational/Builder/README.md) constructs complex objects by separating construction and representation.
 - [Factory method](DesignPatternsInCSharp/Creational/Factories/FactoryMethod/README.md) creates objects without specifying the exact class to create.
-- Prototype creates objects by cloning an existing object.
-- [Singleton](DesignPatternsInCSharp/Creational/Singleton) restricts object creation for a class to only one instance.
+- [Prototype](DesignPatternsInCSharp/Creational/Prototype/README.md) creates objects by cloning an existing object.
+- [Singleton](Creational/Singleton/README.md) restricts object creation for a class to only one instance.
 
 ### Structural patterns
 
