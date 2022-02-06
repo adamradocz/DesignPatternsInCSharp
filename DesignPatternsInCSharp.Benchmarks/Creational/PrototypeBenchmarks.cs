@@ -1,6 +1,5 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
-using DesignPatternsInCSharp.Creational.Prototype;
 
 namespace DesignPatternsInCSharp.Benchmarks.Creational;
 
@@ -8,42 +7,52 @@ namespace DesignPatternsInCSharp.Benchmarks.Creational;
 [MemoryDiagnoser, DisassemblyDiagnoser(printInstructionAddresses: true, printSource: true, exportDiff: true)]
 public class PrototypeBenchmarks
 {
-    private readonly Person _person;
-    private readonly PersonShallowCopy _personShallowCopy;
-    private readonly PersonDeepCopy _personDeepCopy;
+    private readonly DesignPatternsInCSharp.Creational.Prototype.Naive.Person _naivePerson;
+    private readonly DesignPatternsInCSharp.Creational.Prototype.MemberwiseClone.Person _memberwiseClonePerson;
 
     public PrototypeBenchmarks()
     {
-        _person = new Person() { Age = 42, Name = "Jack Daniels", IdInfo = new IdInfo(666) };
-        _personShallowCopy = new PersonShallowCopy() { Age = 42, Name = "Jack Daniels", IdInfo = new IdInfo(666) };
-        _personDeepCopy = new PersonDeepCopy() { Age = 42, Name = "Jack Daniels", IdInfo = new IdInfo(666) };
+        string name = "Jane";
+        int age = 69;
+        string streetName = "Main Street";
+        int houseNumber = 123;
+
+        _naivePerson = new()
+        {
+            Name = name,
+            Age = age,
+            Address = new ()
+            {
+                StreetName = streetName,
+                HouseNumber = houseNumber
+            }
+        };
+
+        _memberwiseClonePerson = new()
+        {
+            Name = name,
+            Age = age,
+            Address = new()
+            {
+                StreetName = streetName,
+                HouseNumber = houseNumber
+            }
+        };
     }
 
     [BenchmarkCategory("Shallow")]
     [Benchmark(Baseline = true)]
-    public void PrototypeV1_Without_IClonable_Shallow()
-    {
-        var person = _person.ShallowCopy();
-    }
+    public DesignPatternsInCSharp.Creational.Prototype.Naive.Person NaiveShallowClone() => _naivePerson.ShallowClone();
 
     [BenchmarkCategory("Deep")]
     [Benchmark(Baseline = true)]
-    public void PrototypeV1_Without_IClonable_Deep()
-    {
-        var person = _person.DeepCopy();
-    }
+    public DesignPatternsInCSharp.Creational.Prototype.Naive.Person NaiveDeepClone() => _naivePerson.DeepClone();
 
     [BenchmarkCategory("Shallow")]
     [Benchmark]
-    public void PrototypeV2_With_IClonable_Shallow()
-    {
-        var person = _personShallowCopy.Clone();
-    }
+    public DesignPatternsInCSharp.Creational.Prototype.MemberwiseClone.Person MemberwiseCloneShallowClone() => _memberwiseClonePerson.ShallowClone();
 
     [BenchmarkCategory("Deep")]
     [Benchmark]
-    public void PrototypeV2_With_IClonable_Deep()
-    {
-        var person = _personDeepCopy.Clone();
-    }
+    public DesignPatternsInCSharp.Creational.Prototype.MemberwiseClone.Person MemberwiseCloneDeepClone() => _memberwiseClonePerson.DeepClone();
 }

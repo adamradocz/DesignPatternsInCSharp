@@ -1,6 +1,6 @@
 # Builder Pattern
 
-![Builder UML Diagram](Builder.svg)
+![Builder UML Diagram](builder.svg)
 
 GoF Definition: The builder pattern is a design pattern that allows for the step-by-step creation of complex objects using the correct sequence of actions.
 The construction is controlled by a director object that only needs to know the type of object it is to create.
