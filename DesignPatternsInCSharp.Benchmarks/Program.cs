@@ -1,4 +1,5 @@
 using BenchmarkDotNet.Running;
+using DesignPatternsInCSharp.Benchmarks.Behavioral;
 using DesignPatternsInCSharp.Benchmarks.Creational;
 using DesignPatternsInCSharp.Benchmarks.Creational.Factories;
 

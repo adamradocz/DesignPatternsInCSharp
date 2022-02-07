@@ -1,21 +1,19 @@
 using BenchmarkDotNet.Attributes;
-using DesignPatternsInCSharp.Creational.Singleton;
-using System.Collections.Concurrent;
 
-namespace DesignPatternsInCSharp.Benchmarks.Creational;
+namespace DesignPatternsInCSharp.Benchmarks.Behavioral;
 
 [MemoryDiagnoser, DisassemblyDiagnoser(printInstructionAddresses: true, printSource: true, exportDiff: true)]
 public class StateBenchmarks
 {
     public StateBenchmarks()
     {
-        
+
     }
 
     [Benchmark(Baseline = true)]
     public void Naive()
     {
-        var account = new Behavioral.State.RealLife.Account();
+        var account = new DesignPatternsInCSharp.Behavioral.State.RealLife.Account();
         account.Deposit(500);
         account.Deposit(501);
         account.Withdraw(100);
@@ -25,7 +23,7 @@ public class StateBenchmarks
     [Benchmark]
     public void Stateless()
     {
-        var account = new Behavioral.State.RealLifeStateless.Account();
+        var account = new DesignPatternsInCSharp.Behavioral.State.RealLifeStateless.Account();
         account.Deposit(500);
         account.Deposit(501);
         account.Withdraw(100);
