@@ -22,7 +22,7 @@ public class Person : IPrototype<Person>
         {
             Age = Age,
             Name = Name,
-            Address = Address.ShallowClone()
+            Address = Address.DeepClone()
         };
     }
 }
