@@ -6,9 +6,9 @@ GoF Definition: Converts the interface of a class into another interface that cl
 
 ## Elements of the Adapter Pattern
 
-- Target: Defines the domain-specific interface used by the client code.
-- Adaptee: It has a useful behavior, but it's interface is incompatible with the client code.
-- Adapter: It makes the adaptee's interface compatible with the target's interface.
+- Target: Defines the domain-specific interface used by the client.
+- Adaptee: It has a useful behavior, but it's interface is incompatible with the client .
+- Adapter: Makes the adaptee's interface compatible with the target's interface.
 
 ## Sources
 
