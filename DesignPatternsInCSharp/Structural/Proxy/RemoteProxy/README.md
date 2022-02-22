@@ -28,4 +28,4 @@ public class GreeterTests
         Assert.AreEqual("Hello GreeterClient", reply.Message);
     }
 }
-```csharp
+```
