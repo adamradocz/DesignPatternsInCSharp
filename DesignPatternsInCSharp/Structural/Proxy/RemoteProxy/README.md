@@ -29,9 +29,3 @@ public class GreeterTests
     }
 }
 ```csharp
-
-When used properly, proxy 
-implementations help you 
-to follow Separation of 
-Concerns and the Single 
-Responsibility Principle.
