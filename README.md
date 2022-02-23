@@ -30,7 +30,7 @@ These concern class and object composition. They use inheritance to compose inte
 - Composite composes zero-or-more similar objects so that they can be manipulated as one object.
 - Decorator dynamically adds/overrides behaviour in an existing method of an object.
 - Facade provides a simplified interface to a large body of code.
-- Flyweight reduces the cost of creating and manipulating a large number of similar objects.
+- [Flyweight](DesignPatternsInCSharp/Structural/Flyweight/README.md) reduces the cost of creating and manipulating a large number of similar objects.
 - Proxy provides a placeholder for another object to control access, reduce cost, and reduce complexity.
 
 ### Behavioral patterns
