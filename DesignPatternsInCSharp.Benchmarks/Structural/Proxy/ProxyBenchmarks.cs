@@ -12,7 +12,7 @@ public class ProxyBenchmarks
 
     public ProxyBenchmarks()
     {
-        _bankAccountSmartProxy = new BankAccountSmartProxy();
+        _bankAccountSmartProxy = new BankAccountSmartLogProxy();
         _bankAccountDynamictProxy = Log<BankAccount>.As<IBankAccount>();
     }
 
