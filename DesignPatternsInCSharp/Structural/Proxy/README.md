@@ -12,7 +12,6 @@ GoF Definition: Proxy is a structural design pattern that lets you provide a sub
 
 ## Vartiants
 - Smart Proxy: Perform additional actions when a resource is accessed.
-- Protective Proxy: Controls access to a sensitive resource by checking whether not the client is authorized to perform those operations
 
 ## Sources
 - [Dofactory - C# Proxy](https://www.dofactory.com/net/proxy-design-pattern)
