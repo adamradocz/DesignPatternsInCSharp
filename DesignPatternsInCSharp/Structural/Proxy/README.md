@@ -11,7 +11,6 @@ GoF Definition: Proxy is a structural design pattern that lets you provide a sub
 - Client: Works wit both services and proxies via the same interface. This way you can pass a proxy into any code that expects a service object.
 
 ## Vartiants
-- Virtual Proxy: Stand in for expensive-to-create objects.
 - Remote Proxy: Hide the details of working remote data or services.
 - Smart Proxy: Perform additional actions when a resource is accessed.
 - Protective Proxy: Controls access to a sensitive resource by checking whether not the client is authorized to perform those operations
