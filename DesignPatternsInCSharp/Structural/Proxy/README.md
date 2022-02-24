@@ -19,3 +19,4 @@ GoF Definition: Proxy is a structural design pattern that lets you provide a sub
 - [Dofactory - C# Proxy](https://www.dofactory.com/net/proxy-design-pattern)
 - [Refactoring.guru - Proxy](https://refactoring.guru/design-patterns/proxy)
 - [Pluralsight - C# Design Patterns: Proxy](https://app.pluralsight.com/library/courses/c-sharp-design-patterns-proxy/table-of-contents)
+- [Making a Dynamic Proxy in C# with ImpromptuInterface](https://www.youtube.com/watch?v=1rjQC6ftC4k)
