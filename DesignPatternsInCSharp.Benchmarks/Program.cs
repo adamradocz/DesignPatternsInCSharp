@@ -2,6 +2,7 @@ using BenchmarkDotNet.Running;
 using DesignPatternsInCSharp.Benchmarks.Behavioral;
 using DesignPatternsInCSharp.Benchmarks.Creational;
 using DesignPatternsInCSharp.Benchmarks.Creational.Factories;
+using DesignPatternsInCSharp.Benchmarks.Structural.Proxy;
 
 namespace DesignPatternsInCSharp.Benchmarks;
 
@@ -18,7 +19,10 @@ internal static class Program
                 typeof(PrototypeBenchmarks),
 
                 // Behavioral patterns
-                typeof(StateBenchmarks)
+                typeof(StateBenchmarks),
+
+                // Structural patterns
+                typeof(ProxyBenchmarks),
             });
 
         benchmarkSwitcher.Run(args);
