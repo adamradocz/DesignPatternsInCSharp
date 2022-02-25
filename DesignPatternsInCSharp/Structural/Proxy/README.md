@@ -11,7 +11,8 @@ GoF Definition: Proxy is a structural design pattern that lets you provide a sub
 - Client: Works wit both services and proxies via the same interface. This way you can pass a proxy into any code that expects a service object.
 
 ## Vartiants
-- Smart Proxy: Perform additional actions when a resource is accessed.
+- Conceptual: Perform additional actions when a resource is accessed.
+- Dynamic: Generic implementation.
 
 ## Sources
 - [Dofactory - C# Proxy](https://www.dofactory.com/net/proxy-design-pattern)
