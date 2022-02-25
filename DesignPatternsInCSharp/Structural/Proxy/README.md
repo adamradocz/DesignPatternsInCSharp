@@ -27,7 +27,6 @@ Intel Core i7-10700 CPU 2.90GHz, 1 CPU, 16 logical and 8 physical cores
 ```
 |          Method |       Mean |     Error |    StdDev |     Median |  Ratio | RatioSD | Code Size |  Gen 0 | Allocated |
 |---------------- |-----------:|----------:|----------:|-----------:|-------:|--------:|----------:|-------:|----------:|
-|     BankAccount |   1.116 ns | 0.0022 ns | 0.0020 ns |   1.116 ns |   1.00 |    0.00 |      39 B |      - |         - |
 | ConceptualProxy |  79.485 ns | 1.1645 ns | 2.3256 ns |  78.573 ns |  72.19 |    2.85 |      39 B | 0.0086 |      72 B |
 |    DynamicProxy | 273.049 ns | 1.0390 ns | 0.9719 ns | 273.097 ns | 244.68 |    1.07 |      48 B | 0.0277 |     232 B |
 
