@@ -1,32 +1,29 @@
 using BenchmarkDotNet.Attributes;
-using DesignPatternsInCSharp.Structural.Proxy.DynamicProxy;
-using DesignPatternsInCSharp.Structural.Proxy.SmartProxy;
+using DesignPatternsInCSharp.Structural.Proxy;
+using DesignPatternsInCSharp.Structural.Proxy.Conceptual;
+using DesignPatternsInCSharp.Structural.Proxy.Dynamic;
+using Microsoft.Extensions.Logging;
 
 namespace DesignPatternsInCSharp.Benchmarks.Structural.Proxy;
 
 [MemoryDiagnoser, DisassemblyDiagnoser(printInstructionAddresses: true, printSource: true, exportDiff: true)]
 public class ProxyBenchmarks
 {
-    private readonly IBankAccount _bankAccountSmartProxy;
+    private readonly IBankAccount _bankAccountLogProxy;
     private readonly IBankAccount _bankAccountDynamictProxy;
+    private readonly int _amount;
 
     public ProxyBenchmarks()
     {
-        _bankAccountSmartProxy = new BankAccountSmartLogProxy();
-        _bankAccountDynamictProxy = Log<BankAccount>.As<IBankAccount>();
+        var loggerFactory = new LoggerFactory();
+        _bankAccountLogProxy = new BankAccounLogProxy(loggerFactory.CreateLogger<BankAccounLogProxy>(), new BankAccount());
+        _bankAccountDynamictProxy = Log<BankAccount>.As<IBankAccount>(loggerFactory.CreateLogger<BankAccount>());
+        _amount = 100;
     }
 
     [Benchmark(Baseline = true)]
-    public void SmartProxy()
-    {
-        _bankAccountSmartProxy.Deposit(100);
-        _ = _bankAccountSmartProxy.Withdraw(50);
-    }
+    public int ConceptualProxy() => _bankAccountLogProxy.Deposit(_amount);
 
-    [Benchmark()]
-    public void DynamicProxy()
-    {
-        _bankAccountDynamictProxy.Deposit(100);
-        _ = _bankAccountDynamictProxy.Withdraw(50);
-    }
+    [Benchmark]
+    public int DynamicProxy() => _bankAccountDynamictProxy.Deposit(_amount);
 }
