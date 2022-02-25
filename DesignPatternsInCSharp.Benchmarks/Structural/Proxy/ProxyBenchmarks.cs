@@ -9,25 +9,19 @@ namespace DesignPatternsInCSharp.Benchmarks.Structural.Proxy;
 [MemoryDiagnoser, DisassemblyDiagnoser(printInstructionAddresses: true, printSource: true, exportDiff: true)]
 public class ProxyBenchmarks
 {
-    private readonly IBankAccount _bankAccount;
     private readonly IBankAccount _bankAccountLogProxy;
     private readonly IBankAccount _bankAccountDynamictProxy;
     private readonly int _amount;
 
     public ProxyBenchmarks()
     {
-        _bankAccount = new BankAccount();
-
         var loggerFactory = new LoggerFactory();
         _bankAccountLogProxy = new BankAccounLogProxy(loggerFactory.CreateLogger<BankAccounLogProxy>(), new BankAccount());
-        _bankAccountDynamictProxy = Log<BankAccount>.As<IBankAccount>();
+        _bankAccountDynamictProxy = Log<BankAccount>.As<IBankAccount>(loggerFactory.CreateLogger<BankAccount>());
         _amount = 100;
     }
 
     [Benchmark(Baseline = true)]
-    public int BankAccount() => _bankAccount.Deposit(_amount);
-
-    [Benchmark]
     public int ConceptualProxy() => _bankAccountLogProxy.Deposit(_amount);
 
     [Benchmark]

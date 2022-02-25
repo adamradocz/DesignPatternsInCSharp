@@ -1,12 +1,12 @@
 using DesignPatternsInCSharp.Structural.Proxy;
-using DesignPatternsInCSharp.Structural.Proxy.Conceptual;
+using DesignPatternsInCSharp.Structural.Proxy.Dynamic;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DesignPatternsInCSharp.Tests.Structural.Proxy;
 
 [TestClass]
-public class ConceptualTests
+public class DynamicTests
 {
     [TestMethod]
     public void Deposit_AddAmount_ReturnsBalance()
@@ -14,7 +14,7 @@ public class ConceptualTests
         // Arrange
         var bankAccount = new BankAccount();
         var loggerFactory = new LoggerFactory();
-        var bankAccountLogProxy = new BankAccounLogProxy(loggerFactory.CreateLogger<BankAccounLogProxy>(), new BankAccount());
+        var bankAccountLogProxy = Log<BankAccount>.As<IBankAccount>(loggerFactory.CreateLogger<BankAccount>());
         int amount = 100;
 
         //Act
@@ -31,7 +31,7 @@ public class ConceptualTests
         // Arrange
         var bankAccount = new BankAccount();
         var loggerFactory = new LoggerFactory();
-        var bankAccountLogProxy = new BankAccounLogProxy(loggerFactory.CreateLogger<BankAccounLogProxy>(), new BankAccount());
+        var bankAccountLogProxy = Log<BankAccount>.As<IBankAccount>(loggerFactory.CreateLogger<BankAccount>());
         int amount = 100;
 
         //Act

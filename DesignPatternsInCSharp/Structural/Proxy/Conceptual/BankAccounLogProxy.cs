@@ -15,13 +15,13 @@ public class BankAccounLogProxy : IBankAccount
 
     public int Deposit(int amount)
     {
-        _logger.LogInformation("Invoking {ClassName}.{MethodName} with argument {Amount}.", nameof(BankAccount), nameof(Deposit), amount);
+        _logger.LogTrace("Invoking {ClassName}.{MethodName} with argument {Amount}.", nameof(BankAccount), nameof(Deposit), amount);
         return _bankAccount.Deposit(amount);
     }
 
     public int Withdraw(int amount)
     {
-        _logger.LogInformation("Invoking {ClassName}.{MethodName} with argument {Amount}.", nameof(BankAccount), nameof(Withdraw), amount);
+        _logger.LogTrace("Invoking {ClassName}.{MethodName} with argument {Amount}.", nameof(BankAccount), nameof(Withdraw), amount);
         return _bankAccount.Withdraw(amount);
     }
 }
