@@ -4,10 +4,6 @@ The ultimate design pattern collection in C#
 ## Requirements
 
 - [.NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
-- Any .NET 6 capable IDE:
-  - [Visual Studio 2022](https://www.visualstudio.com/downloads/) on Windows.
-  - [Visual Studio Code](https://code.visualstudio.com/) on any OS.
-  - [Rider](https://www.jetbrains.com/rider/) on any OS.
 
 ## Gang of Four (GoF) patterns
 
@@ -27,7 +23,7 @@ These concern class and object composition. They use inheritance to compose inte
 
 - [Adapter](DesignPatternsInCSharp/Structural/Adapter/README.md) allows classes with incompatible interfaces to work together by wrapping its own interface around that of an already existing class.
 - Bridge decouples an abstraction from its implementation so that the two can vary independently.
-- Composite composes zero-or-more similar objects so that they can be manipulated as one object.
+- [Composite](DesignPatternsInCSharp/Structural/Composite/README.md) composes zero-or-more similar objects so that they can be manipulated as one object.
 - Decorator dynamically adds/overrides behaviour in an existing method of an object.
 - Facade provides a simplified interface to a large body of code.
 - Flyweight reduces the cost of creating and manipulating a large number of similar objects.
