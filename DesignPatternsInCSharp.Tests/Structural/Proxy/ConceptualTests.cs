@@ -17,11 +17,11 @@ public class ConceptualTests
         var bankAccountLogProxy = new BankAccounLogProxy(loggerFactory.CreateLogger<BankAccounLogProxy>(), new BankAccount());
         int amount = 100;
 
-        //Act
+        // Act
         int balance = bankAccount.Deposit(amount);
         int proxyBalance = bankAccountLogProxy.Deposit(amount);
 
-        //Asert
+        // Assert
         Assert.AreEqual(balance, proxyBalance);
     }
 
@@ -34,11 +34,11 @@ public class ConceptualTests
         var bankAccountLogProxy = new BankAccounLogProxy(loggerFactory.CreateLogger<BankAccounLogProxy>(), new BankAccount());
         int amount = 100;
 
-        //Act
+        // Act
         int balance = bankAccount.Withdraw(amount);
         int proxyBalance = bankAccountLogProxy.Withdraw(amount);
 
-        //Asert
+        // Assert
         Assert.AreEqual(balance, proxyBalance);
     }
 }
