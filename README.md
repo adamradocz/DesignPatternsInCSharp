@@ -19,7 +19,7 @@ Creational patterns are ones that create objects, rather than having to instanti
 - [Builder](DesignPatternsInCSharp/Creational/Builder/README.md) constructs complex objects by separating construction and representation.
 - [Factory method](DesignPatternsInCSharp/Creational/Factories/FactoryMethod/README.md) creates objects without specifying the exact class to create.
 - [Prototype](DesignPatternsInCSharp/Creational/Prototype/README.md) creates objects by cloning an existing object.
-- [Singleton](Creational/Singleton/README.md) restricts object creation for a class to only one instance.
+- [Singleton](DesignPatternsInCSharp/Creational/Singleton/README.md) restricts object creation for a class to only one instance.
 
 ### Structural patterns
 
@@ -31,7 +31,7 @@ These concern class and object composition. They use inheritance to compose inte
 - Decorator dynamically adds/overrides behaviour in an existing method of an object.
 - Facade provides a simplified interface to a large body of code.
 - [Flyweight](DesignPatternsInCSharp/Structural/Flyweight/README.md) reduces the cost of creating and manipulating a large number of similar objects.
-- Proxy provides a placeholder for another object to control access, reduce cost, and reduce complexity.
+- [Proxy](DesignPatternsInCSharp/Structural/Proxy/README.md) provides a placeholder for another object to control access, reduce cost, and reduce complexity.
 
 ### Behavioral patterns
 
@@ -41,7 +41,7 @@ Most of these design patterns are specifically concerned with communication betw
 - Command creates objects that encapsulate actions and parameters.
 - Interpreter implements a specialized language.
 - Iterator accesses the elements of an object sequentially without exposing its underlying representation.
-- [Mediator](DesignPatternsInCSharp/Behavioral/Mediator) allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
+- [Mediator](DesignPatternsInCSharp/Behavioral/Mediator/README.md) allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
 - Memento provides the ability to restore an object to its previous state (undo).
 - [Observer](DesignPatternsInCSharp/Behavioral/Observer/README.md) is a publish/subscribe pattern, which allows a number of observer objects to see an event.
 - [State](DesignPatternsInCSharp/Behavioral/State/README.md) allows an object to alter its behavior when its internal state changes.
