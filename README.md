@@ -25,7 +25,7 @@ These concern class and object composition. They use inheritance to compose inte
 - Bridge decouples an abstraction from its implementation so that the two can vary independently.
 - [Composite](DesignPatternsInCSharp/Structural/Composite/README.md) composes zero-or-more similar objects so that they can be manipulated as one object.
 - Decorator dynamically adds/overrides behaviour in an existing method of an object.
-- Facade provides a simplified interface to a large body of code.
+- [Facade](DesignPatternsInCSharp/Structural/Facade/README.md) provides a simplified interface to a large body of code.
 - [Flyweight](DesignPatternsInCSharp/Structural/Flyweight/README.md) reduces the cost of creating and manipulating a large number of similar objects.
 - [Proxy](DesignPatternsInCSharp/Structural/Proxy/README.md) provides a placeholder for another object to control access, reduce cost, and reduce complexity.
 
