@@ -1,7 +1,7 @@
 using DesignPatternsInCSharp.Behavioral.Strategy.Conceptual;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DesignPatternsInCSharp.Tests.Behavioral.Strategy.Conceptual;
+namespace DesignPatternsInCSharp.Tests.Behavioral.Strategy;
 
 [TestClass]
 public class ContextTests
