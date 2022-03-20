@@ -8,7 +8,7 @@ Versions:
 
 - Naive: The most basic implementation.
 - DiContainer: `ActivatorUtilities` is used as a factory for types that haven't been registered in the DI container, but have dependencies that are registered in it.
-- DiContainerV2: A more optimized versios of the previous one. This will pre-calculate the constructor based on the types passed and build a factory for it.
+- DiContainerV2: An optimized versios of the previous one. This will pre-calculate the constructor based on the types passed and build a factory for it.
 - GenericTypeFactory: A generic factory that can resolve the TService from the DI container or creates an instance if it's not in the container.
 - LazyFactory: Lazy initialization of services. `Lazy<T>` could also be used as-is if added with a concrete type at service registration time:
 
