@@ -15,8 +15,8 @@ Versions:
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddTransient<Lazy<IFoo>>(sp => new Lazy<IFoo>(() => sp.GetRequiredService<IFoo>());
-    services.AddTransient<Lazy<IBar>>(sp => new Lazy<IBar>(() => sp.GetRequiredService<IBar>());
+    services.AddTransient<Lazy<IFoo>>(sp => new Lazy<IFoo>(() => sp.GetRequiredService<IFoo>()));
+    services.AddTransient<Lazy<IBar>>(sp => new Lazy<IBar>(() => sp.GetRequiredService<IBar>()));
 }
 ```
 
