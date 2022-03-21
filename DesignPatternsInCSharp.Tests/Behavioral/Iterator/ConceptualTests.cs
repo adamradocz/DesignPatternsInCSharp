@@ -11,6 +11,36 @@ public class ConceptualTests
     private readonly List<string> _itemsB = new() { "D", "E", "F" };
 
     [TestMethod]
+    public void Iterate_ThreeElementCounted()
+    {
+        // Arrange        
+        var concreteAggregateA = new ConcreteAggregateA();
+        var concreteIteratorA = new ConcreteIteratorA(_itemsA);
+
+        var concreteAggregateB = new ConcreteAggregateB();
+        var concreteIteratorB = new ConcreteIteratorB(_itemsB);
+
+        // Act
+        int elementCountedA = 0;
+        while (!concreteIteratorA.IsDone())
+        {
+            elementCountedA++;
+            concreteIteratorA.Next();
+        }
+
+        int elementCountedB = 0;
+        while (!concreteIteratorB.IsDone())
+        {
+            elementCountedB++;
+            concreteIteratorB.Next();
+        }
+
+        // Assert
+        Assert.AreEqual(_itemsA.Length, elementCountedA);
+        Assert.AreEqual(_itemsB.Count, elementCountedB);
+    }
+
+    [TestMethod]
     public void CurrentItem_NextNotCalled_SameAsFirstItem()
     {
         // Arrange        
