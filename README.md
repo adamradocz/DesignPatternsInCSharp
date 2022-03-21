@@ -36,7 +36,7 @@ Most of these design patterns are specifically concerned with communication betw
 - Chain of responsibility delegates commands to a chain of processing objects.
 - Command creates objects that encapsulate actions and parameters.
 - Interpreter implements a specialized language.
-- Iterator accesses the elements of an object sequentially without exposing its underlying representation.
+- [Iterator](DesignPatternsInCSharp/Behavioral/Iterator/README.md) accesses the elements of an object sequentially without exposing its underlying representation.
 - [Mediator](DesignPatternsInCSharp/Behavioral/Mediator/README.md) allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
 - Memento provides the ability to restore an object to its previous state (undo).
 - [Observer](DesignPatternsInCSharp/Behavioral/Observer/README.md) is a publish/subscribe pattern, which allows a number of observer objects to see an event.
