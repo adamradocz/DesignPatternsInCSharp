@@ -24,7 +24,7 @@ These concern class and object composition. They use inheritance to compose inte
 - [Adapter](DesignPatternsInCSharp/Structural/Adapter/README.md) allows classes with incompatible interfaces to work together by wrapping its own interface around that of an already existing class.
 - Bridge decouples an abstraction from its implementation so that the two can vary independently.
 - [Composite](DesignPatternsInCSharp/Structural/Composite/README.md) composes zero-or-more similar objects so that they can be manipulated as one object.
-- Decorator dynamically adds/overrides behaviour in an existing method of an object.
+- [Decorator](DesignPatternsInCSharp/Structural/Decorator/README.md) dynamically adds/overrides behaviour in an existing method of an object.
 - [Facade](DesignPatternsInCSharp/Structural/Facade/README.md) provides a simplified interface to a large body of code.
 - [Flyweight](DesignPatternsInCSharp/Structural/Flyweight/README.md) reduces the cost of creating and manipulating a large number of similar objects.
 - [Proxy](DesignPatternsInCSharp/Structural/Proxy/README.md) provides a placeholder for another object to control access, reduce cost, and reduce complexity.
@@ -36,7 +36,7 @@ Most of these design patterns are specifically concerned with communication betw
 - Chain of responsibility delegates commands to a chain of processing objects.
 - Command creates objects that encapsulate actions and parameters.
 - Interpreter implements a specialized language.
-- Iterator accesses the elements of an object sequentially without exposing its underlying representation.
+- [Iterator](DesignPatternsInCSharp/Behavioral/Iterator/README.md) accesses the elements of an object sequentially without exposing its underlying representation.
 - [Mediator](DesignPatternsInCSharp/Behavioral/Mediator/README.md) allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
 - Memento provides the ability to restore an object to its previous state (undo).
 - [Observer](DesignPatternsInCSharp/Behavioral/Observer/README.md) is a publish/subscribe pattern, which allows a number of observer objects to see an event.
