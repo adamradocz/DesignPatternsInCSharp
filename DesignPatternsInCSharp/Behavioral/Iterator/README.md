@@ -2,7 +2,7 @@
 
 ![Iterator UML Diagram](iterator.svg)
 
-GoF Definition: Provide a way to access the elements of an aggrefate object sequentially without exposing its underlying representation.
+GoF Definition: Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
 ## Elements of the State Pattern
 
