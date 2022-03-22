@@ -25,14 +25,14 @@ public class ConceptualTests
         while (!concreteIteratorA.IsDone())
         {
             elementCountedA++;
-            concreteIteratorA.Next();
+            _ = concreteIteratorA.Next();
         }
 
         int elementCountedB = 0;
         while (!concreteIteratorB.IsDone())
         {
             elementCountedB++;
-            concreteIteratorB.Next();
+            _ = concreteIteratorB.Next();
         }
 
         // Assert
