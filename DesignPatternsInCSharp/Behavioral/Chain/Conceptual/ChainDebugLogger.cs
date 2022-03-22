@@ -3,10 +3,14 @@ public class ChainDebugLogger : IChainLogger
 {
     private IChainLogger? _nextLogger;
 
-    public string? LogMessage(int level, string message)
+    public string? LogMessage(ChainLogLevel level, in string message)
     {
-        if (level > 1)
+        if (level > ChainLogLevel.DEBUG)
         {
+            if (_nextLogger == null)
+            {
+                return "Next logger in the chain is not set, and the current one cannot handle the request";
+            }
             return _nextLogger?.LogMessage(level, message);
         }
         else
@@ -14,7 +18,7 @@ public class ChainDebugLogger : IChainLogger
             return $"DEBUG: {message}";
         }
     }
-    public void SetNextLogger(IChainLogger nextLogger)
+    public void SetNextLogger(in IChainLogger nextLogger)
     {
         _nextLogger = nextLogger;
     }

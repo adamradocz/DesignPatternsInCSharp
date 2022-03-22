@@ -19,19 +19,19 @@ public class ChainOfCommandTests
         string testMessage = "Test message";
 
         //Act
-        var debugMessage = debugChainLogger.LogMessage(1, testMessage);
+        var debugMessage = debugChainLogger.LogMessage(ChainLogLevel.DEBUG, testMessage);
 
         //Assert
         Assert.AreEqual($"DEBUG: {testMessage}", debugMessage);
 
         //Act
-        var infoMessage = debugChainLogger.LogMessage(2, "Test message");
+        var infoMessage = debugChainLogger.LogMessage(ChainLogLevel.INFO, "Test message");
 
         //Assert
         Assert.AreEqual($"INFO: {testMessage}", infoMessage);
 
         //Act
-        var warningMessage = debugChainLogger.LogMessage(3, "Test message");
+        var warningMessage = debugChainLogger.LogMessage(ChainLogLevel.WARNING, "Test message");
 
         //Assert
         Assert.AreEqual($"WARNING: {testMessage}", warningMessage);

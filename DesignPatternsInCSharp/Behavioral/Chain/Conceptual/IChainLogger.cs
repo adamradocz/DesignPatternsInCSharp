@@ -1,7 +1,7 @@
 namespace DesignPatternsInCSharp.Behavioral.Chain.Conceptual;
 public interface IChainLogger
 {
-    public string? LogMessage(int level, string message);
+    public string? LogMessage(ChainLogLevel level, in string message);
 
-    public void SetNextLogger(IChainLogger nextLogger);
+    public void SetNextLogger(in IChainLogger nextLogger);
 }
