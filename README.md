@@ -33,7 +33,7 @@ These concern class and object composition. They use inheritance to compose inte
 
 Most of these design patterns are specifically concerned with communication between objects.
 
-- Chain of responsibility delegates commands to a chain of processing objects.
+- [Chain of responsibility](DesignPatternsInCSharp/Behavioral/Chain/README.md) delegates commands to a chain of processing objects.
 - Command creates objects that encapsulate actions and parameters.
 - Interpreter implements a specialized language.
 - [Iterator](DesignPatternsInCSharp/Behavioral/Iterator/README.md) accesses the elements of an object sequentially without exposing its underlying representation.
