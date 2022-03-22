@@ -78,7 +78,6 @@ public class ConceptualTests
         Assert.AreEqual(_itemsB[1], currentItemB);
     }
 
-
     [TestMethod]
     public void First_NextCalled_SameAsFirstItem()
     {
