@@ -5,14 +5,15 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CCC6A3F4-086F-4D76-9A0A-05F3F96EB75F}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatternsInCSharp", "DesignPatternsInCSharp\DesignPatternsInCSharp.csproj", "{0E7826A9-F4E7-4A66-B4A7-A2687780E824}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatternsInCSharp", "DesignPatternsInCSharp\DesignPatternsInCSharp.csproj", "{0E7826A9-F4E7-4A66-B4A7-A2687780E824}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatternsInCSharp.Tests", "DesignPatternsInCSharp.Tests\DesignPatternsInCSharp.Tests.csproj", "{CF2A1292-690D-4224-B283-F74DB9701C0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatternsInCSharp.Tests", "DesignPatternsInCSharp.Tests\DesignPatternsInCSharp.Tests.csproj", "{CF2A1292-690D-4224-B283-F74DB9701C0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatternsInCSharp.Benchmarks", "DesignPatternsInCSharp.Benchmarks\DesignPatternsInCSharp.Benchmarks.csproj", "{2E6520F2-3697-4343-BCE9-E13A436655EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatternsInCSharp.Benchmarks", "DesignPatternsInCSharp.Benchmarks\DesignPatternsInCSharp.Benchmarks.csproj", "{2E6520F2-3697-4343-BCE9-E13A436655EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
