@@ -14,11 +14,11 @@ public class ConceptualTests
     public void Iterate_ThreeElementCounted()
     {
         // Arrange        
-        var concreteAggregateA = new ConcreteAggregateA();
-        var concreteIteratorA = new ConcreteIteratorA(_itemsA);
+        var concreteAggregateA = new ConcreteAggregateA(_itemsA);
+        var concreteIteratorA = concreteAggregateA.CreateIterator();
 
-        var concreteAggregateB = new ConcreteAggregateB();
-        var concreteIteratorB = new ConcreteIteratorB(_itemsB);
+        var concreteAggregateB = new ConcreteAggregateB(_itemsB);
+        var concreteIteratorB = concreteAggregateB.CreateIterator();
 
         // Act
         int elementCountedA = 0;
@@ -44,11 +44,11 @@ public class ConceptualTests
     public void CurrentItem_NextNotCalled_SameAsFirstItem()
     {
         // Arrange        
-        var concreteAggregateA = new ConcreteAggregateA();
-        var concreteIteratorA = new ConcreteIteratorA(_itemsA);
+        var concreteAggregateA = new ConcreteAggregateA(_itemsA);
+        var concreteIteratorA = concreteAggregateA.CreateIterator();
 
-        var concreteAggregateB = new ConcreteAggregateB();
-        var concreteIteratorB = new ConcreteIteratorB(_itemsB);
+        var concreteAggregateB = new ConcreteAggregateB(_itemsB);
+        var concreteIteratorB = concreteAggregateB.CreateIterator();
 
         // Act
         string? currentItemA = concreteIteratorA.CurrentItem();
@@ -63,11 +63,11 @@ public class ConceptualTests
     public void CurrentItem_NextCalled_SameAsSecondItem()
     {
         // Arrange
-        var concreteAggregateA = new ConcreteAggregateA();
-        var concreteIteratorA = new ConcreteIteratorA(_itemsA);
+        var concreteAggregateA = new ConcreteAggregateA(_itemsA);
+        var concreteIteratorA = concreteAggregateA.CreateIterator();
 
-        var concreteAggregateB = new ConcreteAggregateB();
-        var concreteIteratorB = new ConcreteIteratorB(_itemsB);
+        var concreteAggregateB = new ConcreteAggregateB(_itemsB);
+        var concreteIteratorB = concreteAggregateB.CreateIterator();
 
         // Act
         string? currentItemA = concreteIteratorA.Next();
@@ -83,11 +83,11 @@ public class ConceptualTests
     public void First_NextCalled_SameAsFirstItem()
     {
         // Arrange
-        var concreteAggregateA = new ConcreteAggregateA();
-        var concreteIteratorA = new ConcreteIteratorA(_itemsA);
+        var concreteAggregateA = new ConcreteAggregateA(_itemsA);
+        var concreteIteratorA = concreteAggregateA.CreateIterator();
 
-        var concreteAggregateB = new ConcreteAggregateB();
-        var concreteIteratorB = new ConcreteIteratorB(_itemsB);
+        var concreteAggregateB = new ConcreteAggregateB(_itemsB);
+        var concreteIteratorB = concreteAggregateB.CreateIterator();
 
         // Act
         _ = concreteIteratorA.Next();
