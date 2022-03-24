@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DesignPatternsInCSharp.Creational.Factories.Factory.GenericTypeFactory;
 
-public class Factory<T> : IFactory<T>
+public class Factory<T> : IFactory<T> where T : class
 {
     private readonly IServiceProvider _serviceProvider;
 
