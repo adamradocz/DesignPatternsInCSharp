@@ -37,7 +37,7 @@ public class FactoryBenchmarks
         // Generic Type Factory
         services = new ServiceCollection()
             .AddLogging()
-            .AddTransient(typeof(IServiceFactory<>), typeof(ServiceFactory<>));
+            .AddTransient(typeof(IFactoryV2<>), typeof(FactoryV2<>));
         _serviceProviderForGenericTypeFactory = services.BuildServiceProvider();
 
         // Lazy Factory
@@ -100,16 +100,16 @@ public class FactoryBenchmarks
     [Benchmark]
     public void GenericTypeFactory()
     {
-        var factroy = _serviceProviderForGenericTypeFactory.GetRequiredService<IServiceFactory<Product>>();
-        _ = factroy.CreateService();
+        var factroy = _serviceProviderForGenericTypeFactory.GetRequiredService<IFactoryV2<Product>>();
+        _ = factroy.CreateObject();
     }
 
     [BenchmarkCategory("WithParam")]
     [Benchmark]
     public void GenericTypeFactoryWithParam()
     {
-        var factroy = _serviceProviderForGenericTypeFactory.GetRequiredService<IServiceFactory<ProductWithId>>();
-        _ = factroy.CreateServiceWithParam(69);
+        var factroy = _serviceProviderForGenericTypeFactory.GetRequiredService<IFactoryV2<ProductWithId>>();
+        _ = factroy.CreateObjectWithId(69);
     }
 
     [BenchmarkCategory("WithoutParam")]
