@@ -13,32 +13,22 @@ namespace DesignPatternsInCSharp.Benchmarks.Creational.Factories;
 public class FactoryBenchmarks
 {
     private readonly LoggerFactory _loggerFactory;
-    private readonly ServiceProvider _serviceProviderForDiContainerFactory;
-    private readonly ServiceProvider _serviceProviderForDiContainerFactoryV2;
-    private readonly ServiceProvider _serviceProviderForGenericTypeFactory;
+    private readonly ServiceProvider _serviceProvider;
     private readonly ServiceProvider _serviceProviderForLazyFactory;
 
     public FactoryBenchmarks()
     {
         _loggerFactory = new LoggerFactory();
 
-        // Naive Factory
+        // DI container Factory
         var services = new ServiceCollection()
              .AddLogging()
-             .AddSingleton<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactory>();
-        _serviceProviderForDiContainerFactory = services.BuildServiceProvider();
-
-        // DI container Factory
-        services = new ServiceCollection()
-             .AddLogging()
-             .AddSingleton<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactoryV2>();
-        _serviceProviderForDiContainerFactoryV2 = services.BuildServiceProvider();
-
-        // Generic Type Factory
-        services = new ServiceCollection()
-            .AddLogging()
-            .AddTransient(typeof(IFactoryV2<>), typeof(FactoryV2<>));
-        _serviceProviderForGenericTypeFactory = services.BuildServiceProvider();
+             .AddSingleton<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactory>()
+             .AddSingleton<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactoryV2>()
+             .AddSingleton(typeof(IFactory<>), typeof(Factory<>))
+             .AddSingleton(typeof(IFactoryV2<>), typeof(FactoryV2<>))
+             .AddSingleton(typeof(IFactoryV2WithId<>), typeof(FactoryV2WithId<>));
+        _serviceProvider = services.BuildServiceProvider();
 
         // Lazy Factory
         services = new ServiceCollection()
@@ -68,7 +58,7 @@ public class FactoryBenchmarks
     [Benchmark]
     public void DiContainer()
     {
-        var factroy = _serviceProviderForDiContainerFactory.GetRequiredService<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactory>();
+        var factroy = _serviceProvider.GetRequiredService<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactory>();
         _ = factroy.CreateProduct();
     }
 
@@ -76,7 +66,7 @@ public class FactoryBenchmarks
     [Benchmark]
     public void DiContainerWithParam()
     {
-        var factroy = _serviceProviderForDiContainerFactory.GetRequiredService<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactory>();
+        var factroy = _serviceProvider.GetRequiredService<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactory>();
         _ = factroy.CreateProductWithId(69);
     }
 
@@ -84,7 +74,7 @@ public class FactoryBenchmarks
     [Benchmark]
     public void DiContainerV2()
     {
-        var factroy = _serviceProviderForDiContainerFactoryV2.GetRequiredService<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactoryV2>();
+        var factroy = _serviceProvider.GetRequiredService<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactoryV2>();
         _ = factroy.CreateProduct();
     }
 
@@ -92,7 +82,7 @@ public class FactoryBenchmarks
     [Benchmark]
     public void DiContainerWithParamV2()
     {
-        var factroy = _serviceProviderForDiContainerFactoryV2.GetRequiredService<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactoryV2>();
+        var factroy = _serviceProvider.GetRequiredService<DesignPatternsInCSharp.Creational.Factories.Factory.DiContainer.ProductFactoryV2>();
         _ = factroy.CreateProductWithId(69);
     }
 
@@ -100,7 +90,7 @@ public class FactoryBenchmarks
     [Benchmark]
     public void GenericTypeFactory()
     {
-        var factroy = _serviceProviderForGenericTypeFactory.GetRequiredService<IFactoryV2<Product>>();
+        var factroy = _serviceProvider.GetRequiredService<IFactory<Product>>();
         _ = factroy.CreateObject();
     }
 
@@ -108,7 +98,23 @@ public class FactoryBenchmarks
     [Benchmark]
     public void GenericTypeFactoryWithParam()
     {
-        var factroy = _serviceProviderForGenericTypeFactory.GetRequiredService<IFactoryV2<ProductWithId>>();
+        var factroy = _serviceProvider.GetRequiredService<IFactory<ProductWithId>>();
+        _ = factroy.CreateObjectWithParam(69);
+    }
+
+    [BenchmarkCategory("WithoutParam")]
+    [Benchmark]
+    public void GenericTypeFactoryV2()
+    {
+        var factroy = _serviceProvider.GetRequiredService<IFactoryV2<Product>>();
+        _ = factroy.CreateObject();
+    }
+
+    [BenchmarkCategory("WithParam")]
+    [Benchmark]
+    public void GenericTypeFactoryV2WithParam()
+    {
+        var factroy = _serviceProvider.GetRequiredService<IFactoryV2WithId<ProductWithId>>();
         _ = factroy.CreateObjectWithId(69);
     }
 

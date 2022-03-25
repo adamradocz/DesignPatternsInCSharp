@@ -8,7 +8,7 @@ public class ProductWithId
 
     public int Id { get; }
 
-    public ProductWithId(int id, ILogger<ProductWithId> logger)
+    public ProductWithId(ILogger<ProductWithId> logger, int id)
     {
         Id = id;
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));

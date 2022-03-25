@@ -33,10 +33,10 @@ public class FactoryV2Tests
         int id = 69;
         var services = new ServiceCollection()
             .AddLogging()
-            .AddSingleton(typeof(IFactoryV2<>), typeof(FactoryV2<>));
+            .AddSingleton(typeof(IFactoryV2WithId<>), typeof(FactoryV2WithId<>));
 
         var serviceProvider = services.BuildServiceProvider();
-        var factroy = serviceProvider.GetRequiredService<IFactoryV2<ProductWithId>>();
+        var factroy = serviceProvider.GetRequiredService<IFactoryV2WithId<ProductWithId>>();
 
         // Act
         var product = factroy.CreateObjectWithId(id);

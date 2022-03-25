@@ -8,6 +8,7 @@ namespace DesignPatternsInCSharp.Tests.Creational.Factories.Factory.GenericTypeF
 [TestClass]
 public class FactoryTests
 {
+
     [TestMethod]
     public void CreateService_DependencyHasntAdded_GetProduct()
     {

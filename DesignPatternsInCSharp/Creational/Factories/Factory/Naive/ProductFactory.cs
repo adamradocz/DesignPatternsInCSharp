@@ -15,5 +15,5 @@ public class ProductFactory
 
     public Product CreateProduct() => new(_logger);
 
-    public ProductWithId CreateProductWithId(int id) => new(id, _loggerWithId);
+    public ProductWithId CreateProductWithId(int id) => new(_loggerWithId, id);
 }
