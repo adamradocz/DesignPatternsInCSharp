@@ -6,40 +6,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DesignPatternsInCSharp.Tests.Creational.Factories.Factory.GenericTypeFactory;
 
 [TestClass]
-public class ServiceFactoryTests
+public class FactoryV2Tests
 {
-    [TestMethod]
-    public void CreateService_DependencyAdded_GetProduct()
-    {
-        // Arrange
-        var services = new ServiceCollection()
-            .AddLogging()
-            .AddTransient<Product>()
-            .AddTransient(typeof(IServiceFactory<>), typeof(ServiceFactory<>));
-
-        var serviceProvider = services.BuildServiceProvider();
-        var factroy = serviceProvider.GetRequiredService<IServiceFactory<Product>>();
-
-        // Act
-        var product = factroy.CreateService();
-
-        // Assert
-        Assert.AreEqual("Product", product.Operation());
-    }
-
     [TestMethod]
     public void CreateService_DependencyHasntAdded_GetProduct()
     {
         // Arrange
         var services = new ServiceCollection()
             .AddLogging()
-            .AddTransient(typeof(IServiceFactory<>), typeof(ServiceFactory<>));
+            .AddSingleton(typeof(IFactoryV2<>), typeof(FactoryV2<>));
 
         var serviceProvider = services.BuildServiceProvider();
-        var factroy = serviceProvider.GetRequiredService<IServiceFactory<Product>>();
+        var factroy = serviceProvider.GetRequiredService<IFactoryV2<Product>>();
 
         // Act
-        var product = factroy.CreateService();
+        var product = factroy.CreateObject();
 
         // Assert
         Assert.AreEqual("Product", product.Operation());
@@ -52,13 +33,13 @@ public class ServiceFactoryTests
         int id = 69;
         var services = new ServiceCollection()
             .AddLogging()
-            .AddTransient(typeof(IServiceFactory<>), typeof(ServiceFactory<>));
+            .AddSingleton(typeof(IFactoryV2WithId<>), typeof(FactoryV2WithId<>));
 
         var serviceProvider = services.BuildServiceProvider();
-        var factroy = serviceProvider.GetRequiredService<IServiceFactory<ProductWithId>>();
+        var factroy = serviceProvider.GetRequiredService<IFactoryV2WithId<ProductWithId>>();
 
         // Act
-        var product = factroy.CreateServiceWithParam(id);
+        var product = factroy.CreateObjectWithId(id);
 
         // Assert
         Assert.AreEqual(id, product.Id);

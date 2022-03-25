@@ -22,27 +22,28 @@ public void ConfigureServices(IServiceCollection services)
 
 ``` ini
 
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19044.1469 (21H2)
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19044.1620 (21H2)
 Intel Core i7-10700 CPU 2.90GHz, 1 CPU, 16 logical and 8 physical cores
-.NET SDK=6.0.101
-  [Host]     : .NET 6.0.1 (6.0.121.56705), X64 RyuJIT  [AttachedDebugger]
-  DefaultJob : .NET 6.0.1 (6.0.121.56705), X64 RyuJIT
+.NET SDK=7.0.100-preview.1.22110.4
+  [Host]     : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT  [AttachedDebugger]
+  DefaultJob : .NET 6.0.3 (6.0.322.12309), X64 RyuJIT
 
 
 ```
-|                      Method |      Mean |    Error |   StdDev | Ratio | Code Size |  Gen 0 | Allocated |
-|---------------------------- |----------:|---------:|---------:|------:|----------:|-------:|----------:|
-|                       Naive | 375.57 ns | 0.498 ns | 0.442 ns |  1.00 |     352 B | 0.1125 |     944 B |
-|                 DiContainer | 255.55 ns | 0.501 ns | 0.444 ns |  0.68 |     811 B | 0.0143 |     120 B |
-|               DiContainerV2 |  55.64 ns | 0.134 ns | 0.125 ns |  0.15 |     195 B | 0.0029 |      24 B |
-|          GenericTypeFactory | 306.31 ns | 0.383 ns | 0.339 ns |  0.82 |     167 B | 0.0172 |     144 B |
-|                 LazyFactory | 110.15 ns | 0.261 ns | 0.244 ns |  0.29 |     167 B | 0.0248 |     208 B |
-|                             |           |          |          |       |           |        |           |
-|              NaiveWithParam | 389.04 ns | 0.510 ns | 0.425 ns |  1.00 |     363 B | 0.1135 |     952 B |
-|        DiContainerWithParam | 303.55 ns | 0.414 ns | 0.387 ns |  0.78 |     855 B | 0.0238 |     200 B |
-|      DiContainerWithParamV2 |  64.59 ns | 0.292 ns | 0.274 ns |  0.17 |      40 B | 0.0105 |      88 B |
-| GenericTypeFactoryWithParam | 337.53 ns | 0.299 ns | 0.265 ns |  0.87 |     234 B | 0.0267 |     224 B |
-
+|                        Method |      Mean |    Error |   StdDev | Ratio |  Gen 0 | Code Size | Allocated |
+|------------------------------ |----------:|---------:|---------:|------:|-------:|----------:|----------:|
+|                         Naive | 387.66 ns | 3.055 ns | 2.551 ns |  1.00 | 0.1125 |     352 B |     944 B |
+|                   DiContainer | 272.55 ns | 1.805 ns | 1.688 ns |  0.70 | 0.0143 |     811 B |     120 B |
+|                 DiContainerV2 |  52.35 ns | 0.384 ns | 0.359 ns |  0.14 | 0.0029 |     195 B |      24 B |
+|            GenericTypeFactory | 280.67 ns | 2.156 ns | 2.017 ns |  0.72 | 0.0143 |     167 B |     120 B |
+|          GenericTypeFactoryV2 |  61.34 ns | 0.124 ns | 0.116 ns |  0.16 | 0.0029 |     167 B |      24 B |
+|                   LazyFactory | 111.63 ns | 0.599 ns | 0.561 ns |  0.29 | 0.0248 |     167 B |     208 B |
+|                               |           |          |          |       |        |           |           |
+|                NaiveWithParam | 389.05 ns | 3.539 ns | 3.310 ns |  1.00 | 0.1135 |     362 B |     952 B |
+|          DiContainerWithParam | 332.98 ns | 0.602 ns | 0.502 ns |  0.85 | 0.0238 |     855 B |     200 B |
+|        DiContainerWithParamV2 |  65.85 ns | 0.578 ns | 0.512 ns |  0.17 | 0.0105 |     293 B |      88 B |
+|   GenericTypeFactoryWithParam | 343.27 ns | 2.450 ns | 2.292 ns |  0.88 | 0.0238 |     234 B |     200 B |
+| GenericTypeFactoryV2WithParam |  66.66 ns | 0.360 ns | 0.281 ns |  0.17 | 0.0105 |     172 B |      88 B |
 
 ## Sources
 
