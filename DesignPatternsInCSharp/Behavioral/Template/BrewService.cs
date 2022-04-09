@@ -4,17 +4,17 @@ public abstract class  BrewService<T> where T : IBrew, new()
     protected T Brew;
 
     // Template
-    public T CreateCoffee()
+    public T CreateBrew()
     {
         Brew = new T();
         TakeOrder();
         ProcessPayment();
-        BrewCoffee();
+        BrewBeverage();
         ServeCoffee();
         return Brew;
     }
 
-    public abstract IBrew BrewCoffee();
+    public abstract IBrew BrewBeverage();
 
     protected virtual bool ProcessPayment() => true;
 
