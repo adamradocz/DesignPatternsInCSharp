@@ -1,20 +1,20 @@
 namespace DesignPatternsInCSharp.Behavioral.Template;
 public abstract class  BrewService<T> where T : IBrew, new()
 {
-    protected T Brew;
+    private T? _brew;
 
     // Template
     public T CreateBrew()
     {
-        Brew = new T();
+        _brew = new T();
         TakeOrder();
         ProcessPayment();
         BrewBeverage();
         ServeCoffee();
-        return Brew;
+        return _brew;
     }
 
-    public abstract IBrew BrewBeverage();
+    protected abstract IBrew BrewBeverage();
 
     protected virtual bool ProcessPayment() => true;
 
