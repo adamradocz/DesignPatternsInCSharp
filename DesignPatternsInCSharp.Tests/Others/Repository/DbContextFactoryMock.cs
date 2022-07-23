@@ -6,9 +6,9 @@ internal class DbContextFactoryMock<TContext> : IDbContextFactory<TContext> wher
 {
     private readonly DbContextOptions<TContext> _options;
 
-    public DbContextFactoryMock(DbContextOptions<TContext> options)
+    public DbContextFactoryMock(string databaseName)
     {
-        _options = options ?? throw new ArgumentNullException(nameof(options));
+        _options = new DbContextOptionsBuilder<TContext>().UseInMemoryDatabase(databaseName).EnableSensitiveDataLogging().Options;
     }
 
     public TContext CreateDbContext() => (TContext)Activator.CreateInstance(typeof(TContext), _options);
