@@ -87,7 +87,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, n
             }
         }
 
-        return orderBy == null ? queryable.ToListAsync() : orderBy(queryable).ToListAsync();
+        return orderBy is null ? queryable.ToListAsync() : orderBy(queryable).ToListAsync();
     }
 
     public virtual void Update(TEntity entity) => _dbSet.Update(entity);
