@@ -40,10 +40,8 @@ public class RepositoryTests
         Assert.AreEqual("CategoryName", category.CategoryName);
     }
 
-    private IServiceCollection ConfigureServices(IServiceCollection serviceCollection)
-    {
-        return
+    private IServiceCollection ConfigureServices(IServiceCollection serviceCollection) =>
         serviceCollection.AddDbContextPool<TrainingDbContext>(options => options.UseInMemoryDatabase(nameof(RepositoryTests)).EnableSensitiveDataLogging())
-            .AddSingleton<IRepository<Category>, Repository<Category>>();
-    }
+        .AddSingleton<IRepository<Category>, Repository<Category>>();
+    
 }
