@@ -1,5 +1,8 @@
 using DesignPatternsInCSharp.Others.Repository;
+using DesignPatternsInCSharp.Others.Repository.Interfaces;
 using DesignPatternsInCSharp.Others.Repository.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 
@@ -8,14 +11,21 @@ namespace DesignPatternsInCSharp.Tests.Others.Repository;
 [TestClass]
 public class RepositoryTests
 {
+    private readonly ServiceProvider _serviceProvider;
+
+    public RepositoryTests()
+    {
+        var servicesCollection = new ServiceCollection();
+        _serviceProvider = ConfigureServices(servicesCollection).BuildServiceProvider();
+    }
+
     [TestMethod]
     public async Task Repository_FindByAsync_CategoryFoundByName()
     {
         //Arrange
-        var dbContextFactory = new DbContextFactoryMock<TrainingDbContext>(nameof(Repository_FindByAsync_CategoryFoundByName));
-        var dbContext = dbContextFactory.CreateDbContext();
+        using var dbContext = _serviceProvider.GetRequiredService<TrainingDbContext>();
         _ = await dbContext.Database.EnsureCreatedAsync();
-        var categoryRepository = new Repository<Category>(dbContext);
+        var categoryRepository = _serviceProvider.GetRequiredService<IRepository<Category>>();
 
         Assert.AreEqual(0, (await categoryRepository.GetAllAsync()).Count);
         categoryRepository.Add(new Category() { Id = 1, CategoryName = "CategoryName" });
@@ -28,5 +38,12 @@ public class RepositoryTests
         //Assert
         Assert.IsNotNull(category);
         Assert.AreEqual("CategoryName", category.CategoryName);
+    }
+
+    private IServiceCollection ConfigureServices(IServiceCollection serviceCollection)
+    {
+        return
+        serviceCollection.AddDbContextPool<TrainingDbContext>(options => options.UseInMemoryDatabase(nameof(RepositoryTests)).EnableSensitiveDataLogging())
+            .AddSingleton<IRepository<Category>, Repository<Category>>();
     }
 }
