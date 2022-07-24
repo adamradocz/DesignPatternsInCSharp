@@ -24,7 +24,7 @@ public class UnitOfWorkTests
     public async Task UnitOfWork_AddCategoryAndProduct_BothSaved()
     {
         //Arrange
-        var unitOfWork = _serviceProvider.GetRequiredService<DesignPatternsInCSharp.Others.UnitOfWork.UnitOfWork>();
+        using var unitOfWork = _serviceProvider.GetRequiredService<DesignPatternsInCSharp.Others.UnitOfWork.UnitOfWork>();
 
         Assert.AreEqual(0, (await unitOfWork.CategoryRepository.GetAllAsync()).Count);
         Assert.AreEqual(0, (await unitOfWork.ProductRepository.GetAllAsync()).Count);
