@@ -43,5 +43,4 @@ public class RepositoryTests
     private IServiceCollection ConfigureServices(IServiceCollection serviceCollection) =>
         serviceCollection.AddDbContextPool<TrainingDbContext>(options => options.UseInMemoryDatabase(nameof(RepositoryTests)).EnableSensitiveDataLogging())
         .AddSingleton<IRepository<Category>, Repository<Category>>();
-    
 }

@@ -24,8 +24,4 @@
     <ProjectReference Include="..\DesignPatternsInCSharp\DesignPatternsInCSharp.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Others\UnitOfWork\" />
-  </ItemGroup>
-
 </Project>
