@@ -6,10 +6,6 @@ using System.Linq.Expressions;
 
 namespace DesignPatternsInCSharp.Others.Repository;
 
-// Based on:
-// - https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
-// - https://medium.com/codex/generic-repository-unit-of-work-patterns-in-net-b830b7fb5668
-
 /// <summary>
 /// Generic repository.
 /// </summary>
