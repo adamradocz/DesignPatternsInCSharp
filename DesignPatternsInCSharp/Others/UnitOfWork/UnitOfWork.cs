@@ -1,5 +1,4 @@
 using DesignPatternsInCSharp.Others.Repository.Models;
-using DesignPatternsInCSharp.Others.Repository;
 using Microsoft.EntityFrameworkCore;
 using DesignPatternsInCSharp.Others.Repository.Interfaces;
 using DesignPatternsInCSharp.Others.Repository.Data;
