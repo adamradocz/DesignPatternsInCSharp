@@ -1,4 +1,3 @@
-using DesignPatternsInCSharp.Others.Repository;
 using DesignPatternsInCSharp.Others.Repository.Data;
 using DesignPatternsInCSharp.Others.Repository.Interfaces;
 using DesignPatternsInCSharp.Others.Repository.Models;

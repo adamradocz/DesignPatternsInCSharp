@@ -1,9 +1,8 @@
-using DesignPatternsInCSharp.Others.Repository.Data;
 using DesignPatternsInCSharp.Others.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace DesignPatternsInCSharp.Others.Repository;
+namespace DesignPatternsInCSharp.Others.Repository.Data;
 
 /// <inheritdoc cref="IRepository{TEntity}"/>
 public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
