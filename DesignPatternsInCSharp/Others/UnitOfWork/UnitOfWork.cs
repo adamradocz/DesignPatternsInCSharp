@@ -37,7 +37,7 @@ public class UnitOfWork : IDisposable, IAsyncDisposable
 
     public UnitOfWork(IDbContextFactory<ProductDbContext> dbContextFactory)
     {
-        Guard.IsNotNull(dbContextFactory, nameof(dbContextFactory));
+        ArgumentNullException.ThrowIfNull(dbContextFactory);
 
         _context = dbContextFactory!.CreateDbContext();
     }
