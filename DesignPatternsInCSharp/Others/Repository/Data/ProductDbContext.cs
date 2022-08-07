@@ -1,7 +1,7 @@
 using DesignPatternsInCSharp.Others.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DesignPatternsInCSharp.Others.Repository;
+namespace DesignPatternsInCSharp.Others.Repository.Data;
 
 public class ProductDbContext : DbContext
 {

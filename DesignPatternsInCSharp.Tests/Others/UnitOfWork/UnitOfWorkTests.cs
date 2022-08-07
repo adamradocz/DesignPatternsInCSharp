@@ -1,10 +1,10 @@
 using DesignPatternsInCSharp.Others.Repository.Models;
-using DesignPatternsInCSharp.Others.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using DesignPatternsInCSharp.Tests.Others.Repository;
 using Microsoft.EntityFrameworkCore;
+using DesignPatternsInCSharp.Others.Repository.Data;
 
 namespace DesignPatternsInCSharp.Tests.Others.UnitOfWork;
 

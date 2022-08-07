@@ -3,6 +3,7 @@ using DesignPatternsInCSharp.Others.Repository;
 using Microsoft.EntityFrameworkCore;
 using CommunityToolkit.Diagnostics;
 using DesignPatternsInCSharp.Others.Repository.Interfaces;
+using DesignPatternsInCSharp.Others.Repository.Data;
 
 namespace DesignPatternsInCSharp.Others.UnitOfWork;
 
