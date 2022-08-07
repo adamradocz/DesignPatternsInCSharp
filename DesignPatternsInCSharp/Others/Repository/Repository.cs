@@ -1,4 +1,3 @@
-using CommunityToolkit.Diagnostics;
 using DesignPatternsInCSharp.Others.Repository.Data;
 using DesignPatternsInCSharp.Others.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +12,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, n
 
     public Repository(ProductDbContext context)
     {
-        Guard.IsNotNull(context, nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
         _dbSet = context.Set<TEntity>();
     }
 
