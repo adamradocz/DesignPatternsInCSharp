@@ -23,7 +23,7 @@ public class RepositoryTests
     public async Task Repository_FindByAsync_CategoryFoundByName()
     {
         //Arrange
-        using var dbContext = _serviceProvider.GetRequiredService<TrainingDbContext>();
+        using var dbContext = _serviceProvider.GetRequiredService<ProductDbContext>();
         _ = await dbContext.Database.EnsureCreatedAsync();
         var categoryRepository = _serviceProvider.GetRequiredService<IRepository<Category>>();
 
@@ -41,6 +41,6 @@ public class RepositoryTests
     }
 
     private IServiceCollection ConfigureServices(IServiceCollection serviceCollection) =>
-        serviceCollection.AddDbContextPool<TrainingDbContext>(options => options.UseInMemoryDatabase(nameof(RepositoryTests)).EnableSensitiveDataLogging())
+        serviceCollection.AddDbContextPool<ProductDbContext>(options => options.UseInMemoryDatabase(nameof(RepositoryTests)).EnableSensitiveDataLogging())
         .AddSingleton<IRepository<Category>, Repository<Category>>();
 }

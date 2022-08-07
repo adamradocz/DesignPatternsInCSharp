@@ -17,7 +17,7 @@ public class UnitOfWorkTests
     {
         var servicesCollection = new ServiceCollection();
         _serviceProvider = ConfigureServices(servicesCollection).BuildServiceProvider();
-        _ = _serviceProvider.GetRequiredService<TrainingDbContext>().Database.EnsureCreated();
+        _ = _serviceProvider.GetRequiredService<ProductDbContext>().Database.EnsureCreated();
     }
 
     [TestMethod]
@@ -40,7 +40,7 @@ public class UnitOfWorkTests
     }
 
     private IServiceCollection ConfigureServices(IServiceCollection serviceCollection) =>
-        serviceCollection.AddPooledDbContextFactory<TrainingDbContext>(options => options.UseInMemoryDatabase(nameof(RepositoryTests)).EnableSensitiveDataLogging())
-                         .AddSingleton<TrainingDbContext>()
+        serviceCollection.AddPooledDbContextFactory<ProductDbContext>(options => options.UseInMemoryDatabase(nameof(RepositoryTests)).EnableSensitiveDataLogging())
+                         .AddSingleton<ProductDbContext>()
                          .AddSingleton<DesignPatternsInCSharp.Others.UnitOfWork.UnitOfWork>();
 }

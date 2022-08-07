@@ -17,7 +17,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, n
 {
     internal readonly DbSet<TEntity> _dbSet;
 
-    public Repository(TrainingDbContext context)
+    public Repository(ProductDbContext context)
     {
         Guard.IsNotNull(context, nameof(context));
         _dbSet = context.Set<TEntity>();

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DesignPatternsInCSharp.Others.Repository;
 
-public class TrainingDbContext : DbContext
+public class ProductDbContext : DbContext
 {
-    public TrainingDbContext(DbContextOptions<TrainingDbContext> options) : base(options)
+    public ProductDbContext(DbContextOptions<ProductDbContext> options) : base(options)
     {
     }
 

@@ -8,7 +8,7 @@ namespace DesignPatternsInCSharp.Others.UnitOfWork;
 
 public class UnitOfWork : IDisposable, IAsyncDisposable
 {
-    private readonly TrainingDbContext _context;
+    private readonly ProductDbContext _context;
 
     private bool _disposedValue;
 
@@ -34,7 +34,7 @@ public class UnitOfWork : IDisposable, IAsyncDisposable
         }
     }
 
-    public UnitOfWork(IDbContextFactory<TrainingDbContext> dbContextFactory)
+    public UnitOfWork(IDbContextFactory<ProductDbContext> dbContextFactory)
     {
         Guard.IsNotNull(dbContextFactory, nameof(dbContextFactory));
 
