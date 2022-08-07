@@ -1,42 +1,39 @@
 using DesignPatternsInCSharp.Others.Repository.Models;
-using DesignPatternsInCSharp.Others.Repository;
 using Microsoft.EntityFrameworkCore;
-using CommunityToolkit.Diagnostics;
 using DesignPatternsInCSharp.Others.Repository.Interfaces;
+using DesignPatternsInCSharp.Others.Repository.Data;
 
 namespace DesignPatternsInCSharp.Others.UnitOfWork;
 
 public class UnitOfWork : IDisposable, IAsyncDisposable
 {
-    private readonly TrainingDbContext _context;
-
-    private bool _disposedValue;
+    private readonly ProductDbContext _context;
 
     private IRepository<Product>? _productRepository;
+    private IRepository<Category>? _categoryRepository;
+    private bool _disposedValue;
+
     public IRepository<Product> ProductRepository
     {
         get
         {
             _productRepository ??= new Repository<Product>(_context);
-
             return _productRepository;
         }
     }
 
-    private IRepository<Category>? _categoryRepository;
     public IRepository<Category> CategoryRepository
     {
         get
         {
             _categoryRepository ??= new Repository<Category>(_context);
-
             return _categoryRepository;
         }
     }
 
-    public UnitOfWork(IDbContextFactory<TrainingDbContext> dbContextFactory)
+    public UnitOfWork(IDbContextFactory<ProductDbContext> dbContextFactory)
     {
-        Guard.IsNotNull(dbContextFactory, nameof(dbContextFactory));
+        ArgumentNullException.ThrowIfNull(dbContextFactory);
 
         _context = dbContextFactory!.CreateDbContext();
     }
