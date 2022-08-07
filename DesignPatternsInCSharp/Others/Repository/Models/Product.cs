@@ -3,7 +3,7 @@ namespace DesignPatternsInCSharp.Others.Repository.Models;
 public class Product
 {
     public int Id { get; set; }
-    public string ProductName { get; set; }
+    public string ProductName { get; set; } = string.Empty;
     public int? SupplierID { get; set; }
     public int? CategoryID { get; set; }
     public string? QuantityPerUnit { get; set; }

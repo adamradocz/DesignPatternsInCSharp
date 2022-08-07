@@ -20,8 +20,5 @@ public class TrainingDbContext : DbContext
 
         _ = modelBuilder.Entity<Category>()
             .Property(e => e.Description);
-
-        _ = modelBuilder.Entity<Category>()
-            .Property(e => e.Picture);
     }
 }
