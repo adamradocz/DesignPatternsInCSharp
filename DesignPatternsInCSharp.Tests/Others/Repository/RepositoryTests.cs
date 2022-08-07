@@ -4,6 +4,7 @@ using DesignPatternsInCSharp.Others.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace DesignPatternsInCSharp.Tests.Others.Repository;
@@ -11,36 +12,56 @@ namespace DesignPatternsInCSharp.Tests.Others.Repository;
 [TestClass]
 public class RepositoryTests
 {
-    private readonly ServiceProvider _serviceProvider;
-
-    public RepositoryTests()
+    [TestMethod]
+    public async Task FindByAsync_AddOneItemAndUseTheFilter_ItemFound()
     {
-        var servicesCollection = new ServiceCollection();
-        _serviceProvider = ConfigureServices(servicesCollection).BuildServiceProvider();
+        //Arrange
+        using var serviceProvider = ConfigureServices(new ServiceCollection())
+            .BuildServiceProvider();
+
+        var dbContext = serviceProvider.GetRequiredService<ProductDbContext>();
+        _ = await dbContext.Database.EnsureCreatedAsync();
+        var categoryRepository = serviceProvider.GetRequiredService<IRepository<Category>>();
+
+        //Act        
+        categoryRepository.Add(new Category() { Id = 1, CategoryName = "Category1" });
+        var savedItemsCount = await dbContext.SaveChangesAsync();
+        var category = await categoryRepository.FindByAsync(category => category.CategoryName.Equals("Category1", System.StringComparison.Ordinal));
+
+        //Assert
+        Assert.AreEqual(1, savedItemsCount);
+        Assert.IsNotNull(category);
+        Assert.AreEqual("Category1", category.CategoryName);
     }
 
     [TestMethod]
-    public async Task Repository_FindByAsync_CategoryFoundByName()
+    public async Task GetAllAsync_AddTwoItems_ReturnsTwoItems()
     {
         //Arrange
-        using var dbContext = _serviceProvider.GetRequiredService<ProductDbContext>();
-        _ = await dbContext.Database.EnsureCreatedAsync();
-        var categoryRepository = _serviceProvider.GetRequiredService<IRepository<Category>>();
+        using var serviceProvider = ConfigureServices(new ServiceCollection())
+            .BuildServiceProvider();
 
-        Assert.AreEqual(0, (await categoryRepository.GetAllAsync()).Count);
-        categoryRepository.Add(new Category() { Id = 1, CategoryName = "CategoryName" });
-        _ = await dbContext.SaveChangesAsync();
-        Assert.AreEqual(1, (await categoryRepository.GetAllAsync()).Count);
+        var dbContext = serviceProvider.GetRequiredService<ProductDbContext>();
+        _ = await dbContext.Database.EnsureCreatedAsync();
+
+        var categoryRepository = serviceProvider.GetRequiredService<IRepository<Category>>();
 
         //Act
-        var category = await categoryRepository.FindByAsync(category => category.CategoryName == "CategoryName");
+        var initialItems =  await categoryRepository.GetAllAsync();
+
+        categoryRepository.Add(new Category() { Id = 1, CategoryName = "Category1" });
+        categoryRepository.Add(new Category() { Id = 2, CategoryName = "Category2" });
+
+        var savedItemsCount = await dbContext.SaveChangesAsync();
+        var items = await categoryRepository.GetAllAsync();
 
         //Assert
-        Assert.IsNotNull(category);
-        Assert.AreEqual("CategoryName", category.CategoryName);
+        Assert.AreEqual(0, initialItems.Count);
+        Assert.AreEqual(2, savedItemsCount);
+        Assert.AreEqual(2, items.Count);
     }
 
-    private IServiceCollection ConfigureServices(IServiceCollection serviceCollection) =>
-        serviceCollection.AddDbContextPool<ProductDbContext>(options => options.UseInMemoryDatabase(nameof(RepositoryTests)).EnableSensitiveDataLogging())
+    private static IServiceCollection ConfigureServices(IServiceCollection serviceCollection, [CallerMemberName] string callerMemberName = "") =>
+        serviceCollection.AddDbContextPool<ProductDbContext>(options => options.UseInMemoryDatabase(callerMemberName).EnableSensitiveDataLogging())
         .AddSingleton<IRepository<Category>, Repository<Category>>();
 }
