@@ -9,26 +9,24 @@ public class UnitOfWork : IDisposable, IAsyncDisposable
 {
     private readonly ProductDbContext _context;
 
+    private IRepository<Product>? _productRepository;
+    private IRepository<Category>? _categoryRepository;
     private bool _disposedValue;
 
-    private IRepository<Product>? _productRepository;
     public IRepository<Product> ProductRepository
     {
         get
         {
             _productRepository ??= new Repository<Product>(_context);
-
             return _productRepository;
         }
     }
 
-    private IRepository<Category>? _categoryRepository;
     public IRepository<Category> CategoryRepository
     {
         get
         {
             _categoryRepository ??= new Repository<Category>(_context);
-
             return _categoryRepository;
         }
     }
