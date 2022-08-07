@@ -6,10 +6,7 @@ using System.Linq.Expressions;
 
 namespace DesignPatternsInCSharp.Others.Repository;
 
-/// <summary>
-/// Generic repository.
-/// </summary>
-/// <typeparam name="TEntity">Entity.</typeparam>
+/// <inheritdoc cref="IRepository{TEntity}"/>
 public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
 {
     internal readonly DbSet<TEntity> _dbSet;
@@ -20,58 +17,26 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, n
         _dbSet = context.Set<TEntity>();
     }
 
-    /// <summary>
-    /// Get all the entitis.
-    /// </summary>
-    /// <remarks>
-    /// Multiple active operations on the same context instance are not supported.
-    /// Use <c>await</c> to ensure that any asynchronous operations have completed before calling another method on this context.
-    /// </remarks>
-    /// <returns>A task that represents the asynchronous operation. The task result contains a <c>System.Collections.Generic.List</c>.</returns>
-    public virtual Task<List<TEntity>> GetAllAsync() => _dbSet.ToListAsync();
-
+    ///<inheritdoc/>
     public virtual void Add(TEntity entity) => _dbSet.Add(entity);
 
+    ///<inheritdoc/>
     public virtual void AddRange(IEnumerable<TEntity> entities) => _dbSet.AddRange(entities);
 
-    public virtual ValueTask<TEntity> FindByIdAsync(int id) => _dbSet.FindAsync(id);
-
-    /// <summary>
-    /// Find a specific entity.
-    /// </summary>
-    /// <param name="filter">Filter condition. Eg.: <c>partner => partner.Name == "HUN"</c></param>
-    /// <param name="includeProperties">Lif of navigation properties.</param>
-    /// <remarks>
-    /// Multiple active operations on the same context instance are not supported.
-    /// Use <c>await</c> to ensure that any asynchronous operations have completed before calling another method on this context.
-    /// </remarks>
-    /// <returns>A task that represents the asynchronous operation. The task result contains a <typeparamref name="TEntity"/>.</returns>
-    public virtual Task<TEntity> FindByAsync(Expression<Func<TEntity, bool>> filter, string[]? includeProperties = null)
+    ///<inheritdoc/>
+    public virtual void Delete(int id)
     {
-        var queryable = _dbSet.AsQueryable().Where(filter);
-
-        if (includeProperties is not null)
-        {
-            foreach (var includeProperty in includeProperties)
-            {
-                queryable = queryable.Include(includeProperty);
-            }
-        }
-
-        return queryable.FirstOrDefaultAsync();
+        var entityToDelete = _dbSet.Find(id);
+        Delete(entityToDelete);
     }
 
-    /// <summary>
-    /// Find all the specific entities.
-    /// </summary>
-    /// <param name="filter">Filter condition. Eg.: <c>partner => partner.Name == "HUN"</c></param>
-    /// <param name="orderBy">Lamba expression. Eg: <c>q => q.OrderBy(s => s.Name)</c></param>
-    /// <param name="includeProperties">Lif of navigation properties.</param>
-    /// <remarks>
-    /// Multiple active operations on the same context instance are not supported.
-    /// Use <c>await</c> to ensure that any asynchronous operations have completed before calling another method on this context.
-    /// </remarks>
-    /// <returns>A task that represents the asynchronous operation. The task result contains a List of <typeparamref name="TEntity"/>.</returns>
+    ///<inheritdoc/>
+    public virtual void Delete(TEntity entity) => _dbSet.Remove(entity);
+
+    ///<inheritdoc/>
+    public virtual void DeleteRange(IEnumerable<TEntity> entities) => _dbSet.RemoveRange(entities);
+
+    ///<inheritdoc/>
     public virtual Task<List<TEntity>> FindAllByAsync(Expression<Func<TEntity, bool>> filter, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, string[]? includeProperties = null)
     {
         var queryable = _dbSet.AsQueryable().Where(filter);
@@ -87,17 +52,31 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, n
         return orderBy is null ? queryable.ToListAsync() : orderBy(queryable).ToListAsync();
     }
 
-    public virtual void Update(TEntity entity) => _dbSet.Update(entity);
-
-    public virtual void UpdateRange(IEnumerable<TEntity> entities) => _dbSet.UpdateRange(entities);
-
-    public virtual void Delete(int id)
+    ///<inheritdoc/>
+    public virtual Task<TEntity> FindByAsync(Expression<Func<TEntity, bool>> filter, string[]? includeProperties = null)
     {
-        var entityToDelete = _dbSet.Find(id);
-        Delete(entityToDelete);
+        var queryable = _dbSet.AsQueryable().Where(filter);
+
+        if (includeProperties is not null)
+        {
+            foreach (var includeProperty in includeProperties)
+            {
+                queryable = queryable.Include(includeProperty);
+            }
+        }
+
+        return queryable.FirstOrDefaultAsync();
     }
 
-    public virtual void Delete(TEntity entity) => _dbSet.Remove(entity);
+    ///<inheritdoc/>
+    public virtual ValueTask<TEntity> FindByIdAsync(int id) => _dbSet.FindAsync(id);
 
-    public virtual void DeleteRange(IEnumerable<TEntity> entities) => _dbSet.RemoveRange(entities);
+    ///<inheritdoc/>
+    public virtual Task<List<TEntity>> GetAllAsync() => _dbSet.ToListAsync();
+
+    ///<inheritdoc/>
+    public virtual void Update(TEntity entity) => _dbSet.Update(entity);
+
+    ///<inheritdoc/>
+    public virtual void UpdateRange(IEnumerable<TEntity> entities) => _dbSet.UpdateRange(entities);
 }
