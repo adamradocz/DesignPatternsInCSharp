@@ -43,7 +43,7 @@ Most of these design patterns are specifically concerned with communication betw
 - [State](DesignPatternsInCSharp/Behavioral/State/README.md) allows an object to alter its behavior when its internal state changes.
 - [Strategy](DesignPatternsInCSharp/Behavioral/Strategy/README.md) allows one of a family of algorithms to be selected on-the-fly at runtime.
 - Template method defines the skeleton of an algorithm as an abstract class, allowing its subclasses to provide concrete behavior.
-- Visitor separates an algorithm from an object structure by moving the hierarchy of methods into one object.
+- [Visitor](DesignPatternsInCSharp/Behavioral/Visitor/README.md) separates an algorithm from an object structure by moving the hierarchy of methods into one object.
 
 ## Other frequently used patterns
 
